@@ -42,7 +42,7 @@ import com.cloudhopper.smpp.util.PduUtil;
  */
 public class SubmitMulti extends BaseSm<SubmitMultiResp> {
 
-	private byte numberOfDest;
+	private int numberOfDest;
 
 	private List<Address> destAddresses = new ArrayList<Address>();
 	private List<String> destDistributionList = new ArrayList<String>();
@@ -114,9 +114,9 @@ public class SubmitMulti extends BaseSm<SubmitMultiResp> {
     public void readBody(ChannelBuffer buffer) throws UnrecoverablePduException, RecoverablePduException {
         this.serviceType = ChannelBufferUtil.readNullTerminatedString(buffer);
         this.sourceAddress = ChannelBufferUtil.readAddress(buffer);
-        
-        this.numberOfDest = buffer.readByte();
-        
+
+        this.numberOfDest = buffer.readByte() & 0xFF;
+
         for(int count=0;count<this.numberOfDest; count++){
         	byte flag = buffer.readByte();
         	if(flag==SmppConstants.SME_ADDRESS){
