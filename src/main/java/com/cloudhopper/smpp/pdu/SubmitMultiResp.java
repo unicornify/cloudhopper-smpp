@@ -43,7 +43,7 @@ import com.cloudhopper.smpp.util.PduUtil;
  */
 public class SubmitMultiResp extends BaseSmResp {
 
-	private byte numberOfUnsucessfulDest;
+	private int numberOfUnsucessfulDest;
 	private List<UnsucessfulSME> unsucessfulSmes = new ArrayList<UnsucessfulSME>();
 
 	/**
@@ -60,7 +60,7 @@ public class SubmitMultiResp extends BaseSmResp {
 		this.unsucessfulSmes.add(unsucessfulSME);
 	}
 
-	public byte getNumberOfUnsucessfulDest() {
+	public int getNumberOfUnsucessfulDest() {
 		return numberOfUnsucessfulDest;
 	}
 
@@ -73,7 +73,7 @@ public class SubmitMultiResp extends BaseSmResp {
 			throws UnrecoverablePduException, RecoverablePduException {
 		super.readBody(buffer);
 
-		this.numberOfUnsucessfulDest = buffer.readByte();
+        this.numberOfUnsucessfulDest = buffer.readByte() & 0xFF;
 
 		for (int count = 0; count < this.numberOfUnsucessfulDest; count++) {
 			Address address = ChannelBufferUtil.readAddress(buffer);
