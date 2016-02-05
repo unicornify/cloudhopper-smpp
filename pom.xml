@@ -31,7 +31,7 @@
         <netty.version>3.9.6.Final</netty.version>
         <slf4j.version>1.7.13</slf4j.version>
         <!-- workaround travis ci maven version requirement -->
-        <maven.enforce.version>3.2.5</maven.enforce.version>
+        <maven.enforce.version>2.0.0</maven.enforce.version>
     </properties>
 
     <dependencies>
