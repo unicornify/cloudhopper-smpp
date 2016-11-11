@@ -1,19 +1,19 @@
 <project xmlns="http://maven.apache.org/POM/4.0.0" xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance" xsi:schemaLocation="http://maven.apache.org/POM/4.0.0 http://maven.apache.org/xsd/maven-4.0.0.xsd">
 
     <modelVersion>4.0.0</modelVersion>
-    <groupId>com.fizzed</groupId>
+    <groupId>com.cloudhopper</groupId>
     <artifactId>ch-smpp</artifactId>
     <packaging>jar</packaging>
     <version>5.0.10-SNAPSHOT</version>
     <name>ch-smpp</name>
     <description>Efficient, scalable, and flexible Java implementation of the Short Messaging Peer to Peer Protocol (SMPP)</description>
-    <url>https://github.com/twitter/cloudhopper-smpp</url>
+    <url>https://github.com/Restcomm/cloudhopper-smpp</url>
     <inceptionYear>2009</inceptionYear>
     
     <scm>
-        <url>https://github.com/fizzed/cloudhopper-smpp</url>
-        <connection>scm:git:https://github.com/fizzed/cloudhopper-smpp.git</connection>
-        <developerConnection>scm:git:git@github.com:fizzed/cloudhopper-smpp.git</developerConnection>
+        <url>https://github.com/Restcomm/cloudhopper-smpp</url>
+        <connection>scm:git:https://github.com/Restcomm/cloudhopper-smpp.git</connection>
+        <developerConnection>scm:git:git@github.com:Restcomm/cloudhopper-smpp.git</developerConnection>
         <tag>master</tag>
     </scm>
   
