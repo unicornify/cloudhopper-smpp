@@ -1,10 +1,16 @@
 Cloudhopper SMPP by Fizzed (forked from Twitter) 
 ================================================
 
-[![Build Status](https://secure.travis-ci.org/fizzed/cloudhopper-smpp.png?branch=master)](http://travis-ci.org/fizzed/cloudhopper-smpp)
+[![Build Status](https://secure.travis-ci.org/Restcomm/cloudhopper-smpp.png?branch=master)](https://travis-ci.org/RestComm/cloudhopper-smpp)
 
 News
 ------------------------
+
+**Nov 2016**
+
+While Fizzed, Inc. took over from Twitter but because of an apparent lack of commits for almost a year and PR pending reviews for more than 6 months.
+The project was forked here and will be updated regularly as it is being used in Restcomm SMSC
+
 
 **Nov 2015**
 
