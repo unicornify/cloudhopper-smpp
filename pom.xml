@@ -22,12 +22,12 @@
 	<artifactId>restcomm-parent</artifactId>
 	<version>3.0.5</version>
     </parent>
-    
+
     <properties>
         <main.java.package>com.cloudhopper.smpp</main.java.package>
-        <ch-commons-util.version>7.0.4</ch-commons-util.version>
-        <ch-commons-charset.version>7.0.4</ch-commons-charset.version>
-        <ch-commons-gsm.version>7.0.4</ch-commons-gsm.version>
+        <ch-commons-util.version>7.0.6</ch-commons-util.version>
+        <ch-commons-charset.version>7.0.6</ch-commons-charset.version>
+        <ch-commons-gsm.version>7.0.6</ch-commons-gsm.version>
         <netty.version>3.9.6.Final</netty.version>
         <slf4j.version>1.7.13</slf4j.version>
         <!-- workaround travis ci maven version requirement -->
