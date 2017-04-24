@@ -501,7 +501,22 @@ public class DefaultSmppSession implements SmppServerSession, SmppSessionChannel
 
         WindowFuture<Integer,PduRequest,PduResponse> future = null;
         try {
+
+            // !!!! TODO: extra logging - remove it
+            long startTime = System.currentTimeMillis();
+            // !!!! TODO: extra logging - remove it
+
+
             future = sendWindow.offer(pdu.getSequenceNumber(), pdu, timeoutMillis, configuration.getRequestExpiryTimeout(), synchronous);
+
+
+            // !!!! TODO: extra logging - remove it
+            long endTime = System.currentTimeMillis();
+            if (endTime - startTime > 1000) {
+                logger.warn("*---- ----* - Time of sendWindow.offer() took more then a second: milliseconds: "
+                        + (endTime - startTime));
+            }
+            // !!!! TODO: extra logging - remove it
         } catch (DuplicateKeyException e) {
             throw new UnrecoverablePduException(e.getMessage(), e);
         } catch (OfferTimeoutException e) {
