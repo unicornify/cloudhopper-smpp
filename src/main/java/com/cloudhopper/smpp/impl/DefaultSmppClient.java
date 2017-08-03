@@ -190,15 +190,25 @@ public class DefaultSmppClient implements SmppClient {
         DefaultSmppSession session = null;
         try {
             // connect to the remote system and create the session
+            logger.info("Connecting to remote system " + config.getName());
             session = doOpen(config, sessionHandler);
 
             // try to bind to the remote system (may throw an exception)
+            logger.info("Binding to remote system " + config.getName());
             doBind(session, config, sessionHandler);
+            
+            logger.info("Successfully bound to " + config.getName());
         } finally {
             // close the session if we weren't able to bind correctly
             if (session != null && !session.isBound()) {
                 // make sure that the resources are always cleaned up
-                try { session.close(); } catch (Exception e) { }
+                try { 
+                    logger.info("Closing session - not able to bind to " + config.getName());
+                    session.close(); 
+                } 
+                catch (Exception e) {
+                    logger.info("Exception while trying to close connection to " + config.getName());
+                }
             }
         }
         return session;
