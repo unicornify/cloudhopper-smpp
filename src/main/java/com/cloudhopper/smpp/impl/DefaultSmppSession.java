@@ -331,6 +331,7 @@ public class DefaultSmppSession implements SmppServerSession, SmppSessionChannel
         try {
             this.state.set(STATE_BINDING);
 
+            logger.info("STATE_BINDING was set for systemId=" + request.getSystemId());
             PduResponse response = sendRequestAndGetResponse(request, timeoutInMillis);
             SmppSessionUtil.assertExpectedResponse(request, response);
             BaseBindResp bindResponse = (BaseBindResp)response;
@@ -340,7 +341,7 @@ public class DefaultSmppSession implements SmppServerSession, SmppSessionChannel
                 // bind failed for a specific reason
                 throw new SmppBindException(bindResponse);
             }
-
+            logger.info("Bound to systemId=" + request.getSystemId());
             // if we make it all the way here, we're good and bound
             bound = true;
 
@@ -371,9 +372,15 @@ public class DefaultSmppSession implements SmppServerSession, SmppSessionChannel
             if (bound) {
                 // this session is now successfully bound & ready for processing
                 setBound();
+                logger.info("STATE_BOUND was set for systemId=" + request.getSystemId());
             } else {
                 // the bind failed, we need to clean up resources
-                try { this.close(); } catch (Exception e) { }
+                try {
+                    logger.info("Bound failed for systemId=" + request.getSystemId());
+                    this.close(); 
+                } catch (Exception e) {
+                    logger.info("Exception after bind failed for systemId=" + request.getSystemId());
+                }
             }
         }
     }

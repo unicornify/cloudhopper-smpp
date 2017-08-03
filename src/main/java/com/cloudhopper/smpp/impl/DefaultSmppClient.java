@@ -190,7 +190,7 @@ public class DefaultSmppClient implements SmppClient {
         DefaultSmppSession session = null;
         try {
             // connect to the remote system and create the session
-            logger.info("Connecting to remote system " + config.getName());
+            logger.info("Connecting to remote system " + config.getName() + " host " + config.getHost() + ":" + config.getPort());
             session = doOpen(config, sessionHandler);
 
             // try to bind to the remote system (may throw an exception)
@@ -222,7 +222,9 @@ public class DefaultSmppClient implements SmppClient {
         try {
             // attempt to bind to the SMSC
             // session implementation handles error checking, version negotiation, and can be discarded
+            logger.info("Do binding to esme systemId=" + config.getSystemId());
             bindResp = session.bind(bindRequest, config.getBindTimeout());
+            logger.info("Do bound to esme systemId=" + config.getSystemId());
         } catch (RecoverablePduException e) {
             // if a bind fails, there really is no recovery...
             throw new UnrecoverablePduException(e.getMessage(), e);
@@ -239,19 +241,20 @@ public class DefaultSmppClient implements SmppClient {
     protected DefaultSmppSession createSession(Channel channel, SmppSessionConfiguration config, SmppSessionHandler sessionHandler) throws SmppTimeoutException, SmppChannelException, InterruptedException {
         DefaultSmppSession session = new DefaultSmppSession(SmppSession.Type.CLIENT, config, channel, sessionHandler, monitorExecutor);
 
-	// add SSL handler 
+        logger.info("Creating session with esme " + config.getSystemId());
+        // add SSL handler 
         if (config.isUseSsl()) {
-	    SslConfiguration sslConfig = config.getSslConfiguration();
-	    if (sslConfig == null) throw new IllegalStateException("sslConfiguration must be set");
-	    try {
-		SslContextFactory factory = new SslContextFactory(sslConfig);
-		SSLEngine sslEngine = factory.newSslEngine();
-		sslEngine.setUseClientMode(true);
-		channel.getPipeline().addLast(SmppChannelConstants.PIPELINE_SESSION_SSL_NAME, new SslHandler(sslEngine));
-	    } catch (Exception e) {
-		throw new SmppChannelConnectException("Unable to create SSL session]: " + e.getMessage(), e);
-	    }
-	}
+    	    SslConfiguration sslConfig = config.getSslConfiguration();
+    	    if (sslConfig == null) throw new IllegalStateException("sslConfiguration must be set");
+    	    try {
+        		SslContextFactory factory = new SslContextFactory(sslConfig);
+        		SSLEngine sslEngine = factory.newSslEngine();
+        		sslEngine.setUseClientMode(true);
+        		channel.getPipeline().addLast(SmppChannelConstants.PIPELINE_SESSION_SSL_NAME, new SslHandler(sslEngine));
+    	    } catch (Exception e) {
+    	        throw new SmppChannelConnectException("Unable to create SSL session]: " + e.getMessage(), e);
+    	    }
+        }
 
         // add the thread renamer portion to the pipeline
         if (config.getName() != null) {
@@ -264,11 +267,11 @@ public class DefaultSmppClient implements SmppClient {
         SmppSessionLogger loggingHandler = new SmppSessionLogger(DefaultSmppSession.class.getCanonicalName(), config.getLoggingOptions());
         channel.getPipeline().addLast(SmppChannelConstants.PIPELINE_SESSION_LOGGER_NAME, loggingHandler);
 
-	// add a writeTimeout handler after the logger
-	if (config.getWriteTimeout() > 0) {
-	    WriteTimeoutHandler writeTimeoutHandler = new WriteTimeoutHandler(writeTimeoutTimer, config.getWriteTimeout(), TimeUnit.MILLISECONDS);
-	    channel.getPipeline().addLast(SmppChannelConstants.PIPELINE_SESSION_WRITE_TIMEOUT_NAME, writeTimeoutHandler);
-	}
+    	// add a writeTimeout handler after the logger
+    	if (config.getWriteTimeout() > 0) {
+    	    WriteTimeoutHandler writeTimeoutHandler = new WriteTimeoutHandler(writeTimeoutTimer, config.getWriteTimeout(), TimeUnit.MILLISECONDS);
+    	    channel.getPipeline().addLast(SmppChannelConstants.PIPELINE_SESSION_WRITE_TIMEOUT_NAME, writeTimeoutHandler);
+    	}
 
         // add a new instance of a decoder (that takes care of handling frames)
         channel.getPipeline().addLast(SmppChannelConstants.PIPELINE_SESSION_PDU_DECODER_NAME, new SmppSessionPduDecoder(session.getTranscoder()));
@@ -285,9 +288,10 @@ public class DefaultSmppClient implements SmppClient {
 
 	// set the timeout
 	this.clientBootstrap.setOption("connectTimeoutMillis", connectTimeoutMillis);
-
-        // attempt to connect to the remote system
-        ChannelFuture connectFuture = this.clientBootstrap.connect(socketAddr);
+	
+    // attempt to connect to the remote system
+	logger.info("Attempting to connect to remote system " + host + ":" + port);
+    ChannelFuture connectFuture = this.clientBootstrap.connect(socketAddr);
         
         // wait until the connection is made successfully
 	// boolean timeout = !connectFuture.await(connectTimeoutMillis);
@@ -295,6 +299,11 @@ public class DefaultSmppClient implements SmppClient {
 	//      see http://netty.io/3.9/api/org/jboss/netty/channel/ChannelFuture.html
 	connectFuture.awaitUninterruptibly();
 	//assert connectFuture.isDone();
+	if (connectFuture.isDone()) {
+	    logger.info("Connected to remote system " + host + ":" + port);
+	} else {
+	    logger.info("Uncompleted connection to remote system " + host + ":" + port);
+	}
 
 	if (connectFuture.isCancelled()) {
 	    throw new InterruptedException("connectFuture cancelled by user");
@@ -305,9 +314,10 @@ public class DefaultSmppClient implements SmppClient {
 		throw new SmppChannelConnectException("Unable to connect to host [" + host + "] and port [" + port + "]: " + connectFuture.getCause().getMessage(), connectFuture.getCause());
 	    }
 	}
-
-        // if we get here, then we were able to connect and get a channel
-        return connectFuture.getChannel();
+	
+	logger.info("Successfully connected to remote system " + host + ":" + port);
+    // if we get here, then we were able to connect and get a channel
+    return connectFuture.getChannel();
     }
 
 }
