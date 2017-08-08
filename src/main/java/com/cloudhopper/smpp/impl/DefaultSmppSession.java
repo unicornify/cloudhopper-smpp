@@ -534,8 +534,10 @@ public class DefaultSmppSession implements SmppServerSession, SmppSessionChannel
         }
 
         // write the pdu out & wait timeout amount of time
-	ChannelFuture channelFuture = this.channel.write(buffer).await();
-
+        ChannelFuture channelFuture = this.channel.write(buffer);
+        if(!channelFuture.await(timeoutMillis))
+            throw new SmppChannelException(channelFuture.getCause().getMessage(), channelFuture.getCause());
+        
         // check if the write was a success
         if (!channelFuture.isSuccess()) {
             // the write failed, make sure to throw an exception
@@ -580,8 +582,11 @@ public class DefaultSmppSession implements SmppServerSession, SmppSessionChannel
         }
 
         // write the pdu out & wait timeout amount of time
-        ChannelFuture channelFuture = this.channel.write(buffer).await();
-
+        ChannelFuture channelFuture = this.channel.write(buffer);
+        //REQUESTED BY SERGEI VETUNIEV FOR TESTING
+        if(!channelFuture.await(10000))
+            throw new SmppChannelException(channelFuture.getCause().getMessage(), channelFuture.getCause());
+        
         // check if the write was a success
         if (!channelFuture.isSuccess()) {
             // the write failed, make sure to throw an exception
