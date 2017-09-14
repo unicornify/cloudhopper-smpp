@@ -340,7 +340,6 @@ public class DefaultSmppSession implements SmppServerSession, SmppSessionChannel
                 // bind failed for a specific reason
                 throw new SmppBindException(bindResponse);
             }
-
             // if we make it all the way here, we're good and bound
             bound = true;
 
@@ -373,7 +372,12 @@ public class DefaultSmppSession implements SmppServerSession, SmppSessionChannel
                 setBound();
             } else {
                 // the bind failed, we need to clean up resources
-                try { this.close(); } catch (Exception e) { }
+                try {
+                    logger.debug("Bound failed for systemId=" + request.getSystemId());
+                    this.close(); 
+                } catch (Exception e) {
+                    logger.debug("Exception after bind failed for systemId=" + request.getSystemId());
+                }
             }
         }
     }
@@ -527,8 +531,10 @@ public class DefaultSmppSession implements SmppServerSession, SmppSessionChannel
         }
 
         // write the pdu out & wait timeout amount of time
-	ChannelFuture channelFuture = this.channel.write(buffer).await();
-
+        ChannelFuture channelFuture = this.channel.write(buffer);
+        if(!channelFuture.await(timeoutMillis))
+            throw new SmppChannelException(channelFuture.getCause().getMessage(), channelFuture.getCause());
+        
         // check if the write was a success
         if (!channelFuture.isSuccess()) {
             // the write failed, make sure to throw an exception
@@ -573,8 +579,11 @@ public class DefaultSmppSession implements SmppServerSession, SmppSessionChannel
         }
 
         // write the pdu out & wait timeout amount of time
-        ChannelFuture channelFuture = this.channel.write(buffer).await();
-
+        ChannelFuture channelFuture = this.channel.write(buffer);
+        //REQUESTED BY SERGEI VETUNIEV FOR TESTING
+        if(!channelFuture.await(10000))
+            throw new SmppChannelException(channelFuture.getCause().getMessage(), channelFuture.getCause());
+        
         // check if the write was a success
         if (!channelFuture.isSuccess()) {
             // the write failed, make sure to throw an exception
