@@ -727,7 +727,9 @@ public class DefaultSmppSession implements SmppServerSession, SmppSessionChannel
     @Override
     public void expired(WindowFuture<Integer, PduRequest, PduResponse> future) {
         this.countSendRequestPduExpired(future.getRequest());
-        this.sessionHandler.firePduRequestExpired(future.getRequest());
+        if (this.sessionHandler != null) {
+            this.sessionHandler.firePduRequestExpired(future.getRequest());
+        }
     }
 
     private void countSendRequestPdu(PduRequest pdu) {
