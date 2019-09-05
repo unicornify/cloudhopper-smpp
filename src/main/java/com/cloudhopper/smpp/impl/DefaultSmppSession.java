@@ -746,7 +746,7 @@ public class DefaultSmppSession implements SmppServerSession, SmppSessionChannel
                     this.counters.getTxDeliverSM().incrementRequestAndGet();
                     break;
                 case SmppConstants.CMD_ID_DATA_SM:
-                    this.counters.getTxDataSM().incrementRequestAndGet();
+                    this.counters.getTxDataSMRequest().incrementRequestAndGet();
                     break;
                 case SmppConstants.CMD_ID_ENQUIRE_LINK:
                     this.counters.getTxEnquireLink().incrementRequestAndGet();
@@ -1038,6 +1038,11 @@ public class DefaultSmppSession implements SmppServerSession, SmppSessionChannel
     @Override
     public String getTxDataSMCounter() {
         return hasCounters() ? this.counters.getTxDataSM().toString() : null;
+    }
+
+    @Override
+    public int getTxDataSMCounterRequest() {
+        return hasCounters() ? this.counters.getTxDataSMRequest().getRequest() : null;
     }
 
     @Override

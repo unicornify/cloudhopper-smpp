@@ -101,6 +101,8 @@ public interface DefaultSmppSessionMXBean {
 
     public String getTxDataSMCounter();
 
+    public int getTxDataSMCounterRequest();
+
     public String getTxDeliverSMCounter();
 
     public String getTxEnquireLinkCounter();

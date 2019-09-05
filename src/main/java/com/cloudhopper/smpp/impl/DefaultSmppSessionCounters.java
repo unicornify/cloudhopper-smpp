@@ -22,6 +22,9 @@ package com.cloudhopper.smpp.impl;
 
 import com.cloudhopper.smpp.SmppSessionCounters;
 import com.cloudhopper.smpp.util.ConcurrentCommandCounter;
+import com.cloudhopper.smpp.util.ConcurrentCommandCounterRequest;
+import com.cloudhopper.smpp.util.ConcurrentCommandCounterX;
+
 import java.util.concurrent.atomic.AtomicInteger;
 
 /**
@@ -34,7 +37,8 @@ public class DefaultSmppSessionCounters implements SmppSessionCounters {
     private ConcurrentCommandCounter txSubmitSM;
     private ConcurrentCommandCounter txDeliverSM;
     private ConcurrentCommandCounter txEnquireLink;
-    private ConcurrentCommandCounter txDataSM;
+    private ConcurrentCommandCounterX txDataSM;
+    private ConcurrentCommandCounterRequest txDataSMRequest;
     private ConcurrentCommandCounter rxSubmitSM;
     private ConcurrentCommandCounter rxDeliverSM;
     private ConcurrentCommandCounter rxEnquireLink;
@@ -44,7 +48,8 @@ public class DefaultSmppSessionCounters implements SmppSessionCounters {
         this.txSubmitSM = new ConcurrentCommandCounter();
         this.txDeliverSM = new ConcurrentCommandCounter();
         this.txEnquireLink = new ConcurrentCommandCounter();
-        this.txDataSM = new ConcurrentCommandCounter();
+        this.txDataSM = new ConcurrentCommandCounterX();
+        this.txDataSMRequest = new ConcurrentCommandCounterRequest();
         this.rxSubmitSM = new ConcurrentCommandCounter();
         this.rxDeliverSM = new ConcurrentCommandCounter();
         this.rxEnquireLink = new ConcurrentCommandCounter();
@@ -59,6 +64,7 @@ public class DefaultSmppSessionCounters implements SmppSessionCounters {
         this.txDataSM.reset();
         this.rxSubmitSM.reset();
         this.rxDeliverSM.reset();
+        this.txDataSMRequest.reset();
         this.rxEnquireLink.reset();
         this.rxDataSM.reset();
     }
@@ -84,8 +90,13 @@ public class DefaultSmppSessionCounters implements SmppSessionCounters {
     }
 
     @Override
-    public ConcurrentCommandCounter getTxDataSM() {
+    public ConcurrentCommandCounterX getTxDataSM() {
         return txDataSM;
+    }
+
+    @Override
+    public ConcurrentCommandCounterRequest getTxDataSMRequest() {
+        return txDataSMRequest;
     }
 
     @Override
