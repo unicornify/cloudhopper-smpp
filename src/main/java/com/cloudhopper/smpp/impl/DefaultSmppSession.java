@@ -1035,19 +1035,55 @@ public class DefaultSmppSession implements SmppServerSession, SmppSessionChannel
         return hasCounters() ? this.counters.getRxSubmitSM().toString() : null;
     }
 
-    /*@Override
+
+
+    @Override
+    public int getTxSubmitSMCounterRequest(){
+        return 100;
+        //return hasCounters() ? this.counters.getTxSubmitSM().getRequest() : null;
+    }
+
+    @Override
+    public int getTxSubmitSMCounterExpired(){
+        return 100;
+        //return hasCounters() ? this.counters.getTxSubmitSM().getRequestExpired() : null;
+    }
+
+    @Override
+    public int getTxSubmitSMCounterResponse(){
+        return hasCounters() ? this.counters.getTxSubmitSM().getResponse() : null;
+    }
+
+    @Override
+    public double getTxSubmitSMCounterAvgWaitTime(){
+        return hasCounters() ? this.counters.getTxSubmitSM().getAvgWaitTime() : null;
+    }
+
+    @Override
+    public double getTxSubmitSMCounterAvgResponseTime(){
+        return hasCounters() ? this.counters.getTxSubmitSM().getAvgResponseTime() : null;
+    }
+
+    @Override
+    public double getTxSubmitSMCounterAvgEstimatedProcessingTime(){
+        return hasCounters() ? this.counters.getTxSubmitSM().getAvgEstimatedProcessingTime() : null;
+    }
+
+    @Override
     public String getTxDataSMCounter() {
         return hasCounters() ? this.counters.getTxDataSM().toString() : null;
-    }*/
+    }
 
     @Override
     public int getTxDataSMCounterRequest(){
-        return hasCounters() ? this.counters.getTxDataSM().getRequest() : null;
+        return 100;
+        //return hasCounters() ? this.counters.getTxDataSM().getRequest() : null;
     }
 
     @Override
     public int getTxDataSMCounterExpired(){
-        return hasCounters() ? this.counters.getTxDataSM().getRequestExpired() : null;
+        return 100;
+        //return hasCounters() ? this.counters.getTxDataSM().getRequestExpired() : null;
     }
 
     @Override

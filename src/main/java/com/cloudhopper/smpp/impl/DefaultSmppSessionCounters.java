@@ -21,7 +21,6 @@ package com.cloudhopper.smpp.impl;
  */
 
 import com.cloudhopper.smpp.SmppSessionCounters;
-import com.cloudhopper.smpp.util.ConcurrentCommandCounter;
 import com.cloudhopper.smpp.util.ConcurrentCommandCounterY;
 
 /**
@@ -31,24 +30,24 @@ import com.cloudhopper.smpp.util.ConcurrentCommandCounterY;
  */
 public class DefaultSmppSessionCounters implements SmppSessionCounters {
    
-    private ConcurrentCommandCounter txSubmitSM;
-    private ConcurrentCommandCounter txDeliverSM;
-    private ConcurrentCommandCounter txEnquireLink;
+    private ConcurrentCommandCounterY txSubmitSM;
+    private ConcurrentCommandCounterY txDeliverSM;
+    private ConcurrentCommandCounterY txEnquireLink;
     private ConcurrentCommandCounterY txDataSM;
-    private ConcurrentCommandCounter rxSubmitSM;
-    private ConcurrentCommandCounter rxDeliverSM;
-    private ConcurrentCommandCounter rxEnquireLink;
-    private ConcurrentCommandCounter rxDataSM;
+    private ConcurrentCommandCounterY rxSubmitSM;
+    private ConcurrentCommandCounterY rxDeliverSM;
+    private ConcurrentCommandCounterY rxEnquireLink;
+    private ConcurrentCommandCounterY rxDataSM;
     
     public DefaultSmppSessionCounters() {
-        this.txSubmitSM = new ConcurrentCommandCounter();
-        this.txDeliverSM = new ConcurrentCommandCounter();
-        this.txEnquireLink = new ConcurrentCommandCounter();
+        this.txSubmitSM = new ConcurrentCommandCounterY();
+        this.txDeliverSM = new ConcurrentCommandCounterY();
+        this.txEnquireLink = new ConcurrentCommandCounterY();
         this.txDataSM = new ConcurrentCommandCounterY();
-        this.rxSubmitSM = new ConcurrentCommandCounter();
-        this.rxDeliverSM = new ConcurrentCommandCounter();
-        this.rxEnquireLink = new ConcurrentCommandCounter();
-        this.rxDataSM = new ConcurrentCommandCounter();
+        this.rxSubmitSM = new ConcurrentCommandCounterY();
+        this.rxDeliverSM = new ConcurrentCommandCounterY();
+        this.rxEnquireLink = new ConcurrentCommandCounterY();
+        this.rxDataSM = new ConcurrentCommandCounterY();
     }
     
     @Override
@@ -64,22 +63,22 @@ public class DefaultSmppSessionCounters implements SmppSessionCounters {
     }
 
     @Override
-    public ConcurrentCommandCounter getRxDataSM() {
+    public ConcurrentCommandCounterY getRxDataSM() {
         return rxDataSM;
     }
 
     @Override
-    public ConcurrentCommandCounter getRxDeliverSM() {
+    public ConcurrentCommandCounterY getRxDeliverSM() {
         return rxDeliverSM;
     }
 
     @Override
-    public ConcurrentCommandCounter getRxEnquireLink() {
+    public ConcurrentCommandCounterY getRxEnquireLink() {
         return rxEnquireLink;
     }
 
     @Override
-    public ConcurrentCommandCounter getRxSubmitSM() {
+    public ConcurrentCommandCounterY getRxSubmitSM() {
         return rxSubmitSM;
     }
 
@@ -89,17 +88,17 @@ public class DefaultSmppSessionCounters implements SmppSessionCounters {
     }
 
     @Override
-    public ConcurrentCommandCounter getTxDeliverSM() {
+    public ConcurrentCommandCounterY getTxDeliverSM() {
         return txDeliverSM;
     }
 
     @Override
-    public ConcurrentCommandCounter getTxEnquireLink() {
+    public ConcurrentCommandCounterY getTxEnquireLink() {
         return txEnquireLink;
     }
 
     @Override
-    public ConcurrentCommandCounter getTxSubmitSM() {
+    public ConcurrentCommandCounterY getTxSubmitSM() {
         return txSubmitSM;
     }
 }

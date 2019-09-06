@@ -99,7 +99,7 @@ public interface DefaultSmppSessionMXBean {
 
     public String getRxSubmitSMCounter();
 
-    //public String getTxDataSMCounter();
+    public String getTxDataSMCounter();
 
     public int getTxDataSMCounterRequest();
 
@@ -112,6 +112,18 @@ public interface DefaultSmppSessionMXBean {
     public double getTxDataSMCounterAvgResponseTime();
 
     public double getTxDataSMCounterAvgEstimatedProcessingTime();
+
+    public int getTxSubmitSMCounterRequest();
+
+    public int getTxSubmitSMCounterExpired();
+
+    public int getTxSubmitSMCounterResponse();
+
+    public double getTxSubmitSMCounterAvgWaitTime();
+
+    public double getTxSubmitSMCounterAvgResponseTime();
+
+    public double getTxSubmitSMCounterAvgEstimatedProcessingTime();
 
     public String getTxDeliverSMCounter();
 
