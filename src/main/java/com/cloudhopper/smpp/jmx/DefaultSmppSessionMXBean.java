@@ -101,6 +101,28 @@ public interface DefaultSmppSessionMXBean {
 
     public String getTxDataSMCounter();
 
+    public String getTxDeliverSMCounter();
+
+    public String getTxEnquireLinkCounter();
+
+    public String getTxSubmitSMCounter();
+    
+    public String getRxDataSMCounterAndReset();
+
+    public String getRxDeliverSMCounterAndReset();
+
+    public String getRxEnquireLinkCounterAndReset();
+
+    public String getRxSubmitSMCounterAndReset();
+
+    public String getTxDataSMCounterAndReset();
+
+    public String getTxDeliverSMCounterAndReset();
+
+    public String getTxEnquireLinkCounterAndReset();
+
+    public String getTxSubmitSMCounterAndReset();
+
     public int getTxDataSMCounterRequest();
 
     public int getTxDataSMCounterExpired();
@@ -125,27 +147,77 @@ public interface DefaultSmppSessionMXBean {
 
     public double getTxSubmitSMCounterAvgEstimatedProcessingTime();
 
-    public String getTxDeliverSMCounter();
+    public int getTxDeliverSMCounterRequest();
 
-    public String getTxEnquireLinkCounter();
+    public int getTxDeliverSMCounterExpired();
 
-    public String getTxSubmitSMCounter();
-    
-    public String getRxDataSMCounterAndReset();
+    public int getTxDeliverSMCounterResponse();
 
-    public String getRxDeliverSMCounterAndReset();
+    public double getTxDeliverSMCounterAvgWaitTime();
 
-    public String getRxEnquireLinkCounterAndReset();
+    public double getTxDeliverSMCounterAvgResponseTime();
 
-    public String getRxSubmitSMCounterAndReset();
+    public double getTxDeliverSMCounterAvgEstimatedProcessingTime();
 
-    public String getTxDataSMCounterAndReset();
+    public int getTxEnquireSMCounterRequest();
 
-    public String getTxDeliverSMCounterAndReset();
+    public int getTxEnquireSMCounterExpired();
 
-    public String getTxEnquireLinkCounterAndReset();
+    public int getTxEnquireSMCounterResponse();
 
-    public String getTxSubmitSMCounterAndReset();
+    public double getTxEnquireSMCounterAvgWaitTime();
+
+    public double getTxEnquireSMCounterAvgResponseTime();
+
+    public double getTxEnquireSMCounterAvgEstimatedProcessingTime();
+
+    public int getRxDataSMCounterRequest();
+
+    public int getRxDataSMCounterExpired();
+
+    public int getRxDataSMCounterResponse();
+
+    public double getRxDataSMCounterAvgWaitTime();
+
+    public double getRxDataSMCounterAvgResponseTime();
+
+    public double getRxDataSMCounterAvgEstimatedProcessingTime();
+
+    public int getRxSubmitSMCounterRequest();
+
+    public int getRxSubmitSMCounterExpired();
+
+    public int getRxSubmitSMCounterResponse();
+
+    public double getRxSubmitSMCounterAvgWaitTime();
+
+    public double getRxSubmitSMCounterAvgResponseTime();
+
+    public double getRxSubmitSMCounterAvgEstimatedProcessingTime();
+
+    public int getRxDeliverSMCounterRequest();
+
+    public int getRxDeliverSMCounterExpired();
+
+    public int getRxDeliverSMCounterResponse();
+
+    public double getRxDeliverSMCounterAvgWaitTime();
+
+    public double getRxDeliverSMCounterAvgResponseTime();
+
+    public double getRxDeliverSMCounterAvgEstimatedProcessingTime();
+
+    public int getRxEnquireSMCounterRequest();
+
+    public int getRxEnquireSMCounterExpired();
+
+    public int getRxEnquireSMCounterResponse();
+
+    public double getRxEnquireSMCounterAvgWaitTime();
+
+    public double getRxEnquireSMCounterAvgResponseTime();
+
+    public double getRxEnquireSMCounterAvgEstimatedProcessingTime();
     
     public void enableLogBytes();
     
