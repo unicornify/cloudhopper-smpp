@@ -29,11 +29,12 @@ import java.util.concurrent.atomic.AtomicLong;
  *
  * @author joelauer
  */
-public class ConcurrentCommandCounterX {
+public class ConcurrentCommandCounterY {
 
     private static final String SEPARATOR = ";";
     private static final int BUFF_LENGTH = 128;
 
+    private final AtomicInteger request;
     private final AtomicInteger requestExpired;
     private final AtomicLong requestWaitTime;
     private final AtomicLong requestResponseTime;
@@ -45,7 +46,8 @@ public class ConcurrentCommandCounterX {
     private final StatisticsSample itsRequestResponseTimeSample;
     private final StatisticsSample itsRequestEstimatedProcessingTimeSample;
 
-    public ConcurrentCommandCounterX() {
+    public ConcurrentCommandCounterY() {
+        this.request = new AtomicInteger(0);
         this.requestExpired = new AtomicInteger(0);
         this.requestWaitTime = new AtomicLong(0);
         this.requestResponseTime = new AtomicLong(0);
@@ -57,9 +59,10 @@ public class ConcurrentCommandCounterX {
         itsRequestEstimatedProcessingTimeSample = new StatisticsSample();
     }
 
-    public ConcurrentCommandCounterX(int requestExpired, long requestWaitTime, long requestResponseTime,
+    public ConcurrentCommandCounterY(int request, int requestExpired, long requestWaitTime, long requestResponseTime,
                                      long requestEstimatedProcessingTime, int response,
                                      final ConcurrentCommandStatusCounter responseCommandStatusCounter) {
+        this.request = new AtomicInteger(request);
         this.requestExpired = new AtomicInteger(requestExpired);
         this.requestWaitTime = new AtomicLong(requestWaitTime);
         this.requestResponseTime = new AtomicLong(requestResponseTime);
@@ -72,6 +75,7 @@ public class ConcurrentCommandCounterX {
     }
 
     public void reset() {
+        this.request.set(0);
         this.requestExpired.set(0);
         this.requestWaitTime.set(0);
         this.requestResponseTime.set(0);
@@ -83,10 +87,18 @@ public class ConcurrentCommandCounterX {
         itsRequestEstimatedProcessingTimeSample.reset();
     }
 
-    public ConcurrentCommandCounterX createSnapshot() {
-        return new ConcurrentCommandCounterX( requestExpired.get(), requestWaitTime.get(),
+    public ConcurrentCommandCounterY createSnapshot() {
+        return new ConcurrentCommandCounterY(request.get(), requestExpired.get(), requestWaitTime.get(),
                 requestResponseTime.get(), requestEstimatedProcessingTime.get(), response.get(),
                 responseCommandStatusCounter);
+    }
+
+    public int getRequest() {
+        return this.request.get();
+    }
+
+    public int incrementRequestAndGet() {
+        return this.request.incrementAndGet();
     }
 
     public int getRequestExpired() {
@@ -136,6 +148,30 @@ public class ConcurrentCommandCounterX {
         return this.responseCommandStatusCounter;
     }
 
+    public double getAvgWaitTime(){
+        double avgWaitTime = 0;
+        if (getResponse() > 0) {
+            avgWaitTime = (double) getRequestWaitTime() / (double) getResponse();
+        }
+        return avgWaitTime;
+    }
+
+    public double getAvgResponseTime(){
+        double avgResponseTime = 0;
+        if (getResponse() > 0) {
+            avgResponseTime = (double) getRequestResponseTime() / (double) getResponse();
+        }
+        return avgResponseTime;
+    }
+
+    public double getAvgEstimatedProcessingTime(){
+        double avgEstimatedProcessingTime = 0;
+        if (getResponse() > 0) {
+            avgEstimatedProcessingTime = (double) getRequestEstimatedProcessingTime() / (double) getResponse();
+        }
+        return avgEstimatedProcessingTime;
+    }
+
     /**
      * Dump and reset.
      *
@@ -143,6 +179,7 @@ public class ConcurrentCommandCounterX {
      */
     public String dumpAndReset() {
         final StringBuilder sb = new StringBuilder(BUFF_LENGTH);
+        sb.append(request.get()).append(SEPARATOR);
         sb.append(requestExpired.get()).append(SEPARATOR);
         sb.append(response.get()).append(SEPARATOR);
         sb.append(itsRequestWaitTimeSample.getAndReset()).append(SEPARATOR);
@@ -154,7 +191,9 @@ public class ConcurrentCommandCounterX {
     @Override
     public String toString() {
         StringBuilder to = new StringBuilder();
-        to.append("[expired=");
+        to.append("[request=");
+        to.append(getRequest());
+        to.append(" expired=");
         to.append(getRequestExpired());
         to.append(" response=");
         to.append(getResponse());

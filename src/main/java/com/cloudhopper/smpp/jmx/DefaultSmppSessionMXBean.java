@@ -99,9 +99,19 @@ public interface DefaultSmppSessionMXBean {
 
     public String getRxSubmitSMCounter();
 
-    public String getTxDataSMCounter();
+    //public String getTxDataSMCounter();
 
     public int getTxDataSMCounterRequest();
+
+    public int getTxDataSMCounterExpired();
+
+    public int getTxDataSMCounterResponse();
+
+    public double getTxDataSMCounterAvgWaitTime();
+
+    public double getTxDataSMCounterAvgResponseTime();
+
+    public double getTxDataSMCounterAvgEstimatedProcessingTime();
 
     public String getTxDeliverSMCounter();
 

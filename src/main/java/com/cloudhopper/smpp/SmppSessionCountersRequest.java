@@ -20,8 +20,6 @@ package com.cloudhopper.smpp;
  * #L%
  */
 
-import com.cloudhopper.smpp.util.ConcurrentCommandCounterRequest;
-
 /**
  * Interface defining the counters that can be optionally tracked for an SMPP session.
  * 

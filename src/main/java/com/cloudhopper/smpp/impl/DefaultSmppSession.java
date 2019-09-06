@@ -746,7 +746,7 @@ public class DefaultSmppSession implements SmppServerSession, SmppSessionChannel
                     this.counters.getTxDeliverSM().incrementRequestAndGet();
                     break;
                 case SmppConstants.CMD_ID_DATA_SM:
-                    this.counters.getTxDataSMRequest().incrementRequestAndGet();
+                    this.counters.getTxDataSM().incrementRequestAndGet();
                     break;
                 case SmppConstants.CMD_ID_ENQUIRE_LINK:
                     this.counters.getTxEnquireLink().incrementRequestAndGet();
@@ -1035,14 +1035,39 @@ public class DefaultSmppSession implements SmppServerSession, SmppSessionChannel
         return hasCounters() ? this.counters.getRxSubmitSM().toString() : null;
     }
 
-    @Override
+    /*@Override
     public String getTxDataSMCounter() {
         return hasCounters() ? this.counters.getTxDataSM().toString() : null;
+    }*/
+
+    @Override
+    public int getTxDataSMCounterRequest(){
+        return hasCounters() ? this.counters.getTxDataSM().getRequest() : null;
     }
 
     @Override
-    public int getTxDataSMCounterRequest() {
-        return hasCounters() ? this.counters.getTxDataSMRequest().getRequest() : null;
+    public int getTxDataSMCounterExpired(){
+        return hasCounters() ? this.counters.getTxDataSM().getRequestExpired() : null;
+    }
+
+    @Override
+    public int getTxDataSMCounterResponse(){
+        return hasCounters() ? this.counters.getTxDataSM().getResponse() : null;
+    }
+
+    @Override
+    public double getTxDataSMCounterAvgWaitTime(){
+        return hasCounters() ? this.counters.getTxDataSM().getAvgWaitTime() : null;
+    }
+
+    @Override
+    public double getTxDataSMCounterAvgResponseTime(){
+        return hasCounters() ? this.counters.getTxDataSM().getAvgResponseTime() : null;
+    }
+
+    @Override
+    public double getTxDataSMCounterAvgEstimatedProcessingTime(){
+        return hasCounters() ? this.counters.getTxDataSM().getAvgEstimatedProcessingTime() : null;
     }
 
     @Override

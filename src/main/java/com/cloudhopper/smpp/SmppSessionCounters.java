@@ -21,8 +21,7 @@ package com.cloudhopper.smpp;
  */
 
 import com.cloudhopper.smpp.util.ConcurrentCommandCounter;
-import com.cloudhopper.smpp.util.ConcurrentCommandCounterRequest;
-import com.cloudhopper.smpp.util.ConcurrentCommandCounterX;
+import com.cloudhopper.smpp.util.ConcurrentCommandCounterY;
 
 /**
  * Interface defining the counters that can be optionally tracked for an SMPP session.
@@ -41,9 +40,7 @@ public interface SmppSessionCounters {
 
     public ConcurrentCommandCounter getRxSubmitSM();
 
-    public ConcurrentCommandCounterX getTxDataSM();
-
-    public ConcurrentCommandCounterRequest getTxDataSMRequest();
+    public ConcurrentCommandCounterY getTxDataSM();
 
     public ConcurrentCommandCounter getTxDeliverSM();
 
