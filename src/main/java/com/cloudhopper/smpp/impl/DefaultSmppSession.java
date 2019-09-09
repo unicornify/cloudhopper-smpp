@@ -1057,14 +1057,12 @@ public class DefaultSmppSession implements SmppServerSession, SmppSessionChannel
 
     @Override
     public int getTxDataSMCounterRequest(){
-        return 100;
-        //return hasCounters() ? this.counters.getTxDataSM().getRequest() : null;
+        return hasCounters() ? this.counters.getTxDataSM().getRequest() : null;
     }
 
     @Override
     public int getTxDataSMCounterExpired(){
-        return 100;
-        //return hasCounters() ? this.counters.getTxDataSM().getRequestExpired() : null;
+        return hasCounters() ? this.counters.getTxDataSM().getRequestExpired() : null;
     }
 
     @Override
@@ -1089,14 +1087,12 @@ public class DefaultSmppSession implements SmppServerSession, SmppSessionChannel
 
     @Override
     public int getTxSubmitSMCounterRequest(){
-        return 100;
-        //return hasCounters() ? this.counters.getTxSubmitSM().getRequest() : null;
+        return hasCounters() ? this.counters.getTxSubmitSM().getRequest() : null;
     }
 
     @Override
     public int getTxSubmitSMCounterExpired(){
-        return 100;
-        //return hasCounters() ? this.counters.getTxSubmitSM().getRequestExpired() : null;
+        return hasCounters() ? this.counters.getTxSubmitSM().getRequestExpired() : null;
     }
 
     @Override
@@ -1121,14 +1117,12 @@ public class DefaultSmppSession implements SmppServerSession, SmppSessionChannel
 
     @Override
     public int getTxDeliverSMCounterRequest(){
-        return 100;
-        //return hasCounters() ? this.counters.getTxDeliverSM().getRequest() : null;
+        return hasCounters() ? this.counters.getTxDeliverSM().getRequest() : null;
     }
 
     @Override
     public int getTxDeliverSMCounterExpired(){
-        return 100;
-        //return hasCounters() ? this.counters.getTxDeliverSM().getRequestExpired() : null;
+        return hasCounters() ? this.counters.getTxDeliverSM().getRequestExpired() : null;
     }
 
     @Override
@@ -1153,14 +1147,12 @@ public class DefaultSmppSession implements SmppServerSession, SmppSessionChannel
 
     @Override
     public int getTxEnquireSMCounterRequest(){
-        return 100;
-        //return hasCounters() ? this.counters.getTxEnquireSM().getRequest() : null;
+        return hasCounters() ? this.counters.getTxEnquireSM().getRequest() : null;
     }
 
     @Override
     public int getTxEnquireSMCounterExpired(){
-        return 100;
-        //return hasCounters() ? this.counters.getTxEnquireSM().getRequestExpired() : null;
+        return hasCounters() ? this.counters.getTxEnquireSM().getRequestExpired() : null;
     }
 
     @Override
@@ -1185,14 +1177,12 @@ public class DefaultSmppSession implements SmppServerSession, SmppSessionChannel
 
     @Override
     public int getRxDataSMCounterRequest(){
-        return 100;
-        //return hasCounters() ? this.counters.getRxDataSM().getRequest() : null;
+        return hasCounters() ? this.counters.getRxDataSM().getRequest() : null;
     }
 
     @Override
     public int getRxDataSMCounterExpired(){
-        return 100;
-        //return hasCounters() ? this.counters.getRxDataSM().getRequestExpired() : null;
+        return hasCounters() ? this.counters.getRxDataSM().getRequestExpired() : null;
     }
 
     @Override
@@ -1217,14 +1207,12 @@ public class DefaultSmppSession implements SmppServerSession, SmppSessionChannel
 
     @Override
     public int getRxSubmitSMCounterRequest(){
-        return 100;
-        //return hasCounters() ? this.counters.getRxSubmitSM().getRequest() : null;
+        return hasCounters() ? this.counters.getRxSubmitSM().getRequest() : null;
     }
 
     @Override
     public int getRxSubmitSMCounterExpired(){
-        return 100;
-        //return hasCounters() ? this.counters.getRxSubmitSM().getRequestExpired() : null;
+        return hasCounters() ? this.counters.getRxSubmitSM().getRequestExpired() : null;
     }
 
     @Override
@@ -1249,14 +1237,12 @@ public class DefaultSmppSession implements SmppServerSession, SmppSessionChannel
 
     @Override
     public int getRxDeliverSMCounterRequest(){
-        return 100;
-        //return hasCounters() ? this.counters.getRxDeliverSM().getRequest() : null;
+        return hasCounters() ? this.counters.getRxDeliverSM().getRequest() : null;
     }
 
     @Override
     public int getRxDeliverSMCounterExpired(){
-        return 100;
-        //return hasCounters() ? this.counters.getRxDeliverSM().getRequestExpired() : null;
+        return hasCounters() ? this.counters.getRxDeliverSM().getRequestExpired() : null;
     }
 
     @Override
@@ -1281,14 +1267,12 @@ public class DefaultSmppSession implements SmppServerSession, SmppSessionChannel
 
     @Override
     public int getRxEnquireSMCounterRequest(){
-        return 100;
-        //return hasCounters() ? this.counters.getRxEnquireSM().getRequest() : null;
+        return hasCounters() ? this.counters.getRxEnquireSM().getRequest() : null;
     }
 
     @Override
     public int getRxEnquireSMCounterExpired(){
-        return 100;
-        //return hasCounters() ? this.counters.getRxEnquireSM().getRequestExpired() : null;
+        return hasCounters() ? this.counters.getRxEnquireSM().getRequestExpired() : null;
     }
 
     @Override
