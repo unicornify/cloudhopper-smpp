@@ -227,13 +227,13 @@ public interface DefaultSmppSessionMXBean {
 
     public int getTxDataSMResponseCommandStatusSuccessCounter();
 
-    public long geRxDataSMRequestWaitTime();
+    public long getRxDataSMRequestWaitTime();
 
-    public long geRxDataSMRequestResponseTime();
+    public long getRxDataSMRequestResponseTime();
 
-    public long geRxDataSMRequestEstimatedProcessingTime();
+    public long getRxDataSMRequestEstimatedProcessingTime();
 
-    public int geRxDataSMResponseCommandStatusSuccessCounter();
+    public int getRxDataSMResponseCommandStatusSuccessCounter();
 
     public long getTxSubmitSMRequestWaitTime();
 
@@ -243,13 +243,13 @@ public interface DefaultSmppSessionMXBean {
 
     public int getTxSubmitSMResponseCommandStatusSuccessCounter();
 
-    public long geRxSubmitSMRequestWaitTime();
+    public long getRxSubmitSMRequestWaitTime();
 
-    public long geRxSubmitSMRequestResponseTime();
+    public long getRxSubmitSMRequestResponseTime();
 
-    public long geRxSubmitSMRequestEstimatedProcessingTime();
+    public long getRxSubmitSMRequestEstimatedProcessingTime();
 
-    public int geRxSubmitSMResponseCommandStatusSuccessCounter();
+    public int getRxSubmitSMResponseCommandStatusSuccessCounter();
 
     public long getTxDeliverSMRequestWaitTime();
 
@@ -259,13 +259,13 @@ public interface DefaultSmppSessionMXBean {
 
     public int getTxDeliverSMResponseCommandStatusSuccessCounter();
 
-    public long geRxDeliverSMRequestWaitTime();
+    public long getRxDeliverSMRequestWaitTime();
 
-    public long geRxDeliverSMRequestResponseTime();
+    public long getRxDeliverSMRequestResponseTime();
 
-    public long geRxDeliverSMRequestEstimatedProcessingTime();
+    public long getRxDeliverSMRequestEstimatedProcessingTime();
 
-    public int geRxDeliverSMResponseCommandStatusSuccessCounter();
+    public int getRxDeliverSMResponseCommandStatusSuccessCounter();
 
     public long getTxEnquireSMRequestWaitTime();
 
@@ -275,13 +275,13 @@ public interface DefaultSmppSessionMXBean {
 
     public int getTxEnquireSMResponseCommandStatusSuccessCounter();
 
-    public long geRxEnquireSMRequestWaitTime();
+    public long getRxEnquireSMRequestWaitTime();
 
-    public long geRxEnquireSMRequestResponseTime();
+    public long getRxEnquireSMRequestResponseTime();
 
-    public long geRxEnquireSMRequestEstimatedProcessingTime();
+    public long getRxEnquireSMRequestEstimatedProcessingTime();
 
-    public int geRxEnquireSMResponseCommandStatusSuccessCounter();
+    public int getRxEnquireSMResponseCommandStatusSuccessCounter();
 
     public void enableLogBytes();
     
