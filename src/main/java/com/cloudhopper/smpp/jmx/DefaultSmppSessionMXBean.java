@@ -218,7 +218,71 @@ public interface DefaultSmppSessionMXBean {
     public double getRxEnquireSMCounterAvgResponseTime();
 
     public double getRxEnquireSMCounterAvgEstimatedProcessingTime();
-    
+
+    public long getTxDataSMRequestWaitTime();
+
+    public long getTxDataSMRequestResponseTime();
+
+    public long getTxDataSMRequestEstimatedProcessingTime();
+
+    public int getTxDataSMResponseCommandStatusSuccessCounter();
+
+    public long geRxDataSMRequestWaitTime();
+
+    public long geRxDataSMRequestResponseTime();
+
+    public long geRxDataSMRequestEstimatedProcessingTime();
+
+    public int geRxDataSMResponseCommandStatusSuccessCounter();
+
+    public long getTxSubmitSMRequestWaitTime();
+
+    public long getTxSubmitSMRequestResponseTime();
+
+    public long getTxSubmitSMRequestEstimatedProcessingTime();
+
+    public int getTxSubmitSMResponseCommandStatusSuccessCounter();
+
+    public long geRxSubmitSMRequestWaitTime();
+
+    public long geRxSubmitSMRequestResponseTime();
+
+    public long geRxSubmitSMRequestEstimatedProcessingTime();
+
+    public int geRxSubmitSMResponseCommandStatusSuccessCounter();
+
+    public long getTxDeliverSMRequestWaitTime();
+
+    public long getTxDeliverSMRequestResponseTime();
+
+    public long getTxDeliverSMRequestEstimatedProcessingTime();
+
+    public int getTxDeliverSMResponseCommandStatusSuccessCounter();
+
+    public long geRxDeliverSMRequestWaitTime();
+
+    public long geRxDeliverSMRequestResponseTime();
+
+    public long geRxDeliverSMRequestEstimatedProcessingTime();
+
+    public int geRxDeliverSMResponseCommandStatusSuccessCounter();
+
+    public long getTxEnquireSMRequestWaitTime();
+
+    public long getTxEnquireSMRequestResponseTime();
+
+    public long getTxEnquireSMRequestEstimatedProcessingTime();
+
+    public int getTxEnquireSMResponseCommandStatusSuccessCounter();
+
+    public long geRxEnquireSMRequestWaitTime();
+
+    public long geRxEnquireSMRequestResponseTime();
+
+    public long geRxEnquireSMRequestEstimatedProcessingTime();
+
+    public int geRxEnquireSMResponseCommandStatusSuccessCounter();
+
     public void enableLogBytes();
     
     public void disableLogBytes();

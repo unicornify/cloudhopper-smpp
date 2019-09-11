@@ -1296,6 +1296,166 @@ public class DefaultSmppSession implements SmppServerSession, SmppSessionChannel
     }
 
     @Override
+    public long getTxDataSMRequestWaitTime() {
+        return hasCounters() ? this.counters.getTxDataSM().getRequestWaitTime() : null;
+    }
+
+    @Override
+    public long getTxDataSMRequestResponseTime() {
+        return hasCounters() ? this.counters.getTxDataSM().getRequestResponseTime() : null;
+    }
+
+    @Override
+    public long getTxDataSMRequestEstimatedProcessingTime() {
+        return hasCounters() ? this.counters.getTxDataSM().getRequestEstimatedProcessingTime() : null;
+    }
+
+    @Override
+    public int getTxDataSMResponseCommandStatusSuccessCounter() {
+        return (!hasCounters() || this.counters.getTxDataSM().getResponseCommandStatusCounter() == null)  ? null : this.counters.getTxDataSM().getResponseCommandStatusCounter().get(SmppConstants.STATUS_OK);
+    }
+
+    @Override
+    public long getRxDataSMRequestWaitTime() {
+        return hasCounters() ? this.counters.getRxDataSM().getRequestWaitTime() : null;
+    }
+
+    @Override
+    public long getRxDataSMRequestResponseTime() {
+        return hasCounters() ? this.counters.getRxDataSM().getRequestResponseTime() : null;
+    }
+
+    @Override
+    public long getRxDataSMRequestEstimatedProcessingTime() {
+        return hasCounters() ? this.counters.getRxDataSM().getRequestEstimatedProcessingTime() : null;
+    }
+
+    @Override
+    public int getRxDataSMResponseCommandStatusSuccessCounter() {
+        return (!hasCounters() || this.counters.getRxDataSM().getResponseCommandStatusCounter() == null)  ? null : this.counters.getRxDataSM().getResponseCommandStatusCounter().get(SmppConstants.STATUS_OK);
+    }
+
+    @Override
+    public long getTxSubmitSMRequestWaitTime() {
+        return hasCounters() ? this.counters.getTxSubmitSM().getRequestWaitTime() : null;
+    }
+
+    @Override
+    public long getTxSubmitSMRequestResponseTime() {
+        return hasCounters() ? this.counters.getTxSubmitSM().getRequestResponseTime() : null;
+    }
+
+    @Override
+    public long getTxSubmitSMRequestEstimatedProcessingTime() {
+        return hasCounters() ? this.counters.getTxSubmitSM().getRequestEstimatedProcessingTime() : null;
+    }
+
+    @Override
+    public int getTxSubmitSMResponseCommandStatusSuccessCounter() {
+        return (!hasCounters() || this.counters.getTxSubmitSM().getResponseCommandStatusCounter() == null)  ? null : this.counters.getTxSubmitSM().getResponseCommandStatusCounter().get(SmppConstants.STATUS_OK);
+    }
+
+    @Override
+    public long getRxSubmitSMRequestWaitTime() {
+        return hasCounters() ? this.counters.getRxSubmitSM().getRequestWaitTime() : null;
+    }
+
+    @Override
+    public long getRxSubmitSMRequestResponseTime() {
+        return hasCounters() ? this.counters.getRxSubmitSM().getRequestResponseTime() : null;
+    }
+
+    @Override
+    public long getRxSubmitSMRequestEstimatedProcessingTime() {
+        return hasCounters() ? this.counters.getRxSubmitSM().getRequestEstimatedProcessingTime() : null;
+    }
+
+    @Override
+    public int getRxSubmitSMResponseCommandStatusSuccessCounter() {
+        return (!hasCounters() || this.counters.getRxSubmitSM().getResponseCommandStatusCounter() == null)  ? null : this.counters.getRxSubmitSM().getResponseCommandStatusCounter().get(SmppConstants.STATUS_OK);
+    }
+
+    @Override
+    public long getTxDeliverSMRequestWaitTime() {
+        return hasCounters() ? this.counters.getTxDeliverSM().getRequestWaitTime() : null;
+    }
+
+    @Override
+    public long getTxDeliverSMRequestResponseTime() {
+        return hasCounters() ? this.counters.getTxDeliverSM().getRequestResponseTime() : null;
+    }
+
+    @Override
+    public long getTxDeliverSMRequestEstimatedProcessingTime() {
+        return hasCounters() ? this.counters.getTxDeliverSM().getRequestEstimatedProcessingTime() : null;
+    }
+
+    @Override
+    public int getTxDeliverSMResponseCommandStatusSuccessCounter() {
+        return (!hasCounters() || this.counters.getTxDeliverSM().getResponseCommandStatusCounter() == null)  ? null : this.counters.getTxDeliverSM().getResponseCommandStatusCounter().get(SmppConstants.STATUS_OK);
+    }
+
+    @Override
+    public long getRxDeliverSMRequestWaitTime() {
+        return hasCounters() ? this.counters.getRxDeliverSM().getRequestWaitTime() : null;
+    }
+
+    @Override
+    public long getRxDeliverSMRequestResponseTime() {
+        return hasCounters() ? this.counters.getRxDeliverSM().getRequestResponseTime() : null;
+    }
+
+    @Override
+    public long getRxDeliverSMRequestEstimatedProcessingTime() {
+        return hasCounters() ? this.counters.getRxDeliverSM().getRequestEstimatedProcessingTime() : null;
+    }
+
+    @Override
+    public int getRxDeliverSMResponseCommandStatusSuccessCounter() {
+        return (!hasCounters() || this.counters.getRxDeliverSM().getResponseCommandStatusCounter() == null)  ? null : this.counters.getRxDeliverSM().getResponseCommandStatusCounter().get(SmppConstants.STATUS_OK);
+    }
+
+    @Override
+    public long getTxEnquireSMRequestWaitTime() {
+        return hasCounters() ? this.counters.getTxEnquireLink().getRequestWaitTime() : null;
+    }
+
+    @Override
+    public long getTxEnquireSMRequestResponseTime() {
+        return hasCounters() ? this.counters.getTxEnquireLink().getRequestResponseTime() : null;
+    }
+
+    @Override
+    public long getTxEnquireSMRequestEstimatedProcessingTime() {
+        return hasCounters() ? this.counters.getTxEnquireLink().getRequestEstimatedProcessingTime() : null;
+    }
+
+    @Override
+    public int getTxEnquireSMResponseCommandStatusSuccessCounter() {
+        return (!hasCounters() || this.counters.getTxEnquireLink().getResponseCommandStatusCounter() == null)  ? null : this.counters.getTxEnquireLink().getResponseCommandStatusCounter().get(SmppConstants.STATUS_OK);
+    }
+
+    @Override
+    public long getRxEnquireSMRequestWaitTime() {
+        return hasCounters() ? this.counters.getRxEnquireLink().getRequestWaitTime() : null;
+    }
+
+    @Override
+    public long getRxEnquireSMRequestResponseTime() {
+        return hasCounters() ? this.counters.getRxEnquireLink().getRequestResponseTime() : null;
+    }
+
+    @Override
+    public long getRxEnquireSMRequestEstimatedProcessingTime() {
+        return hasCounters() ? this.counters.getRxEnquireLink().getRequestEstimatedProcessingTime() : null;
+    }
+
+    @Override
+    public int getRxEnquireSMResponseCommandStatusSuccessCounter() {
+        return (!hasCounters() || this.counters.getRxEnquireLink().getResponseCommandStatusCounter() == null)  ? null : this.counters.getRxEnquireLink().getResponseCommandStatusCounter().get(SmppConstants.STATUS_OK);
+    }
+
+    @Override
     public String getRxDataSMCounterAndReset() {
         return hasCounters() ? this.counters.getRxDataSM().dumpAndReset() : null;
     }
