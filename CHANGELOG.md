@@ -4,7 +4,7 @@ Cloudhopper by Twitter
 cloudhopper-smpp
 ----------------
 ## 6.0.0-netty4-beta-2
- - ch-commons-util version bumped from 6.0.1 to 6.0.2 to fix race condition bug 
+ - ch-commons-util version bumped from 6.0.1 to 6.0.2 to fix race condition bug
    in WindowFuture:
      https://github.com/twitter/cloudhopper-smpp/issues/61
 
@@ -13,6 +13,21 @@ cloudhopper-smpp
    on Trustin's review.
  - Netty dependency changed to 4.0.25.Final.
 
+## 5.1.0-157
+ - SRE-3922 Added Smpp Session Counters as individual attributes
+
+## 5.1.0-113 - ?
+ - ?
+
+## 5.0.9 - 2015-11-24
+ - Add support for missing pdus and tags
+ - Allow unbound channel to respond to enquire_link PDU
+ - Corrected name of DataCoding SmppConstant to IA5 (not GSM)
+ - Updated value of DATA_CODING_GSM constant and made it deprecated
+ - Add ESM_CLASS Message Mode constants
+ - DefaultSmppServer should use IO executor passed to its constructor
+ - Fix-up comments on the SMPP error code constants
+
 ## 5.0.8 - 2015-04-17
  - Fixed issue where rawErrorCode not set on DeliveryReceipt (khaing211)
  - Support for host address in SmppServerConfiguration (pgoergler)
@@ -20,11 +35,11 @@ cloudhopper-smpp
  - Tlv class supports equals and hashCode (skytreader)
 
 ## 5.0.7 - 2015-02-02
- - ch-commons-util version bumped from 6.0.1 to 6.0.2 to fix race condition bug 
+ - ch-commons-util version bumped from 6.0.1 to 6.0.2 to fix race condition bug
    in WindowFuture:
      https://github.com/twitter/cloudhopper-smpp/issues/61
  - Netty dependency bumped from 3.9.0.Final to 3.9.6.Final
- 
+
 ## 5.0.6 - 2014-04-02
  - Support for low-level PDU listener (supports advanced logging, sniffing, and
    discarding before normal processing). New methods overridable in
@@ -64,7 +79,7 @@ cloudhopper-smpp
  - Added SSL support for servers and clients with unit and integration tests.
 
 ## 5.0.1 - 2013-03-09
- - Added support for cancel_sm and query_sm SMPP messages. Added unit and 
+ - Added support for cancel_sm and query_sm SMPP messages. Added unit and
    integration tests.
  - Cleaned up intermittent unit test failures by added delays before session
    close.
@@ -101,7 +116,7 @@ cloudhopper-smpp
  - Upgraded ch-commons-util dependency from 4.1 to 5.0
  - WARN: There are some minor source and binary backwards compatability issues
     that were unavoidable to add request expiry as a new feature.
- - Automatic request expiration is fully supported.  See the new 
+ - Automatic request expiration is fully supported.  See the new
     constructors for both DefaultSmppClient and DefaultSmppServer that include
     a "monitorExecutor" parameter to enable the feature.  Also, there are new
     several new options for an SmppServerConfiguration that will control
@@ -111,7 +126,7 @@ cloudhopper-smpp
        defaultWindowWaitTimeout
        defaultRequestExpiryTimeout
        maxConnectionSize
- - Added support for counters in both sessions and server for tracking 
+ - Added support for counters in both sessions and server for tracking
     various key metrics.  Counters are enabled on an SmppServer by default, but
     must be explicitly enabled on sessions.  See countersEnableD() option.
  - Added initial support for JMX management by including an SmppServerMXBean
@@ -122,7 +137,7 @@ cloudhopper-smpp
     response time, and estimated processing time).
  - PduAsyncResponse now includes "getWindowSize" which returns the size of the
     window after adding this response.  Used to estimate processing time.
- - Modified internals of SmppSession to call the "requestWindow" 
+ - Modified internals of SmppSession to call the "requestWindow"
     a "sendWindow".  Since either endpoint of a session can technically
     generate requests, this actually represents the window just for sending.
  - Added windowWaitTimeout as a session configuration.
