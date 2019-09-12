@@ -123,165 +123,165 @@ public interface DefaultSmppSessionMXBean {
 
     public String getTxSubmitSMCounterAndReset();
 
-    public int getTxDataSMCounterRequest();
+    public Integer getTxDataSMCounterRequest();
 
-    public int getTxDataSMCounterExpired();
+    public Integer getTxDataSMCounterExpired();
 
-    public int getTxDataSMCounterResponse();
+    public Integer getTxDataSMCounterResponse();
 
-    public double getTxDataSMCounterAvgWaitTime();
+    public Double getTxDataSMCounterAvgWaitTime();
 
-    public double getTxDataSMCounterAvgResponseTime();
+    public Double getTxDataSMCounterAvgResponseTime();
 
-    public double getTxDataSMCounterAvgEstimatedProcessingTime();
+    public Double getTxDataSMCounterAvgEstimatedProcessingTime();
 
-    public int getTxSubmitSMCounterRequest();
+    public Integer getTxSubmitSMCounterRequest();
 
-    public int getTxSubmitSMCounterExpired();
+    public Integer getTxSubmitSMCounterExpired();
 
-    public int getTxSubmitSMCounterResponse();
+    public Integer getTxSubmitSMCounterResponse();
 
-    public double getTxSubmitSMCounterAvgWaitTime();
+    public Double getTxSubmitSMCounterAvgWaitTime();
 
-    public double getTxSubmitSMCounterAvgResponseTime();
+    public Double getTxSubmitSMCounterAvgResponseTime();
 
-    public double getTxSubmitSMCounterAvgEstimatedProcessingTime();
+    public Double getTxSubmitSMCounterAvgEstimatedProcessingTime();
 
-    public int getTxDeliverSMCounterRequest();
+    public Integer getTxDeliverSMCounterRequest();
 
-    public int getTxDeliverSMCounterExpired();
+    public Integer getTxDeliverSMCounterExpired();
 
-    public int getTxDeliverSMCounterResponse();
+    public Integer getTxDeliverSMCounterResponse();
 
-    public double getTxDeliverSMCounterAvgWaitTime();
+    public Double getTxDeliverSMCounterAvgWaitTime();
 
-    public double getTxDeliverSMCounterAvgResponseTime();
+    public Double getTxDeliverSMCounterAvgResponseTime();
 
-    public double getTxDeliverSMCounterAvgEstimatedProcessingTime();
+    public Double getTxDeliverSMCounterAvgEstimatedProcessingTime();
 
-    public int getTxEnquireSMCounterRequest();
+    public Integer getTxEnquireSMCounterRequest();
 
-    public int getTxEnquireSMCounterExpired();
+    public Integer getTxEnquireSMCounterExpired();
 
-    public int getTxEnquireSMCounterResponse();
+    public Integer getTxEnquireSMCounterResponse();
 
-    public double getTxEnquireSMCounterAvgWaitTime();
+    public Double getTxEnquireSMCounterAvgWaitTime();
 
-    public double getTxEnquireSMCounterAvgResponseTime();
+    public Double getTxEnquireSMCounterAvgResponseTime();
 
-    public double getTxEnquireSMCounterAvgEstimatedProcessingTime();
+    public Double getTxEnquireSMCounterAvgEstimatedProcessingTime();
 
-    public int getRxDataSMCounterRequest();
+    public Integer getRxDataSMCounterRequest();
 
-    public int getRxDataSMCounterExpired();
+    public Integer getRxDataSMCounterExpired();
 
-    public int getRxDataSMCounterResponse();
+    public Integer getRxDataSMCounterResponse();
 
-    public double getRxDataSMCounterAvgWaitTime();
+    public Double getRxDataSMCounterAvgWaitTime();
 
-    public double getRxDataSMCounterAvgResponseTime();
+    public Double getRxDataSMCounterAvgResponseTime();
 
-    public double getRxDataSMCounterAvgEstimatedProcessingTime();
+    public Double getRxDataSMCounterAvgEstimatedProcessingTime();
 
-    public int getRxSubmitSMCounterRequest();
+    public Integer getRxSubmitSMCounterRequest();
 
-    public int getRxSubmitSMCounterExpired();
+    public Integer getRxSubmitSMCounterExpired();
 
-    public int getRxSubmitSMCounterResponse();
+    public Integer getRxSubmitSMCounterResponse();
 
-    public double getRxSubmitSMCounterAvgWaitTime();
+    public Double getRxSubmitSMCounterAvgWaitTime();
 
-    public double getRxSubmitSMCounterAvgResponseTime();
+    public Double getRxSubmitSMCounterAvgResponseTime();
 
-    public double getRxSubmitSMCounterAvgEstimatedProcessingTime();
+    public Double getRxSubmitSMCounterAvgEstimatedProcessingTime();
 
-    public int getRxDeliverSMCounterRequest();
+    public Integer getRxDeliverSMCounterRequest();
 
-    public int getRxDeliverSMCounterExpired();
+    public Integer getRxDeliverSMCounterExpired();
 
-    public int getRxDeliverSMCounterResponse();
+    public Integer getRxDeliverSMCounterResponse();
 
-    public double getRxDeliverSMCounterAvgWaitTime();
+    public Double getRxDeliverSMCounterAvgWaitTime();
 
-    public double getRxDeliverSMCounterAvgResponseTime();
+    public Double getRxDeliverSMCounterAvgResponseTime();
 
-    public double getRxDeliverSMCounterAvgEstimatedProcessingTime();
+    public Double getRxDeliverSMCounterAvgEstimatedProcessingTime();
 
-    public int getRxEnquireSMCounterRequest();
+    public Integer getRxEnquireSMCounterRequest();
 
-    public int getRxEnquireSMCounterExpired();
+    public Integer getRxEnquireSMCounterExpired();
 
-    public int getRxEnquireSMCounterResponse();
+    public Integer getRxEnquireSMCounterResponse();
 
-    public double getRxEnquireSMCounterAvgWaitTime();
+    public Double getRxEnquireSMCounterAvgWaitTime();
 
-    public double getRxEnquireSMCounterAvgResponseTime();
+    public Double getRxEnquireSMCounterAvgResponseTime();
 
-    public double getRxEnquireSMCounterAvgEstimatedProcessingTime();
+    public Double getRxEnquireSMCounterAvgEstimatedProcessingTime();
 
-    public long getTxDataSMRequestWaitTime();
+    public Long getTxDataSMRequestWaitTime();
 
-    public long getTxDataSMRequestResponseTime();
+    public Long getTxDataSMRequestResponseTime();
 
-    public long getTxDataSMRequestEstimatedProcessingTime();
+    public Long getTxDataSMRequestEstimatedProcessingTime();
 
-    public int getTxDataSMResponseCommandStatusSuccessCounter();
+    public Integer getTxDataSMResponseCommandStatusSuccessCounter();
 
-    public long getRxDataSMRequestWaitTime();
+    public Long getRxDataSMRequestWaitTime();
 
-    public long getRxDataSMRequestResponseTime();
+    public Long getRxDataSMRequestResponseTime();
 
-    public long getRxDataSMRequestEstimatedProcessingTime();
+    public Long getRxDataSMRequestEstimatedProcessingTime();
 
-    public int getRxDataSMResponseCommandStatusSuccessCounter();
+    public Integer getRxDataSMResponseCommandStatusSuccessCounter();
 
-    public long getTxSubmitSMRequestWaitTime();
+    public Long getTxSubmitSMRequestWaitTime();
 
-    public long getTxSubmitSMRequestResponseTime();
+    public Long getTxSubmitSMRequestResponseTime();
 
-    public long getTxSubmitSMRequestEstimatedProcessingTime();
+    public Long getTxSubmitSMRequestEstimatedProcessingTime();
 
-    public int getTxSubmitSMResponseCommandStatusSuccessCounter();
+    public Integer getTxSubmitSMResponseCommandStatusSuccessCounter();
 
-    public long getRxSubmitSMRequestWaitTime();
+    public Long getRxSubmitSMRequestWaitTime();
 
-    public long getRxSubmitSMRequestResponseTime();
+    public Long getRxSubmitSMRequestResponseTime();
 
-    public long getRxSubmitSMRequestEstimatedProcessingTime();
+    public Long getRxSubmitSMRequestEstimatedProcessingTime();
 
-    public int getRxSubmitSMResponseCommandStatusSuccessCounter();
+    public Integer getRxSubmitSMResponseCommandStatusSuccessCounter();
 
-    public long getTxDeliverSMRequestWaitTime();
+    public Long getTxDeliverSMRequestWaitTime();
 
-    public long getTxDeliverSMRequestResponseTime();
+    public Long getTxDeliverSMRequestResponseTime();
 
-    public long getTxDeliverSMRequestEstimatedProcessingTime();
+    public Long getTxDeliverSMRequestEstimatedProcessingTime();
 
-    public int getTxDeliverSMResponseCommandStatusSuccessCounter();
+    public Integer getTxDeliverSMResponseCommandStatusSuccessCounter();
 
-    public long getRxDeliverSMRequestWaitTime();
+    public Long getRxDeliverSMRequestWaitTime();
 
-    public long getRxDeliverSMRequestResponseTime();
+    public Long getRxDeliverSMRequestResponseTime();
 
-    public long getRxDeliverSMRequestEstimatedProcessingTime();
+    public Long getRxDeliverSMRequestEstimatedProcessingTime();
 
-    public int getRxDeliverSMResponseCommandStatusSuccessCounter();
+    public Integer getRxDeliverSMResponseCommandStatusSuccessCounter();
 
-    public long getTxEnquireSMRequestWaitTime();
+    public Long getTxEnquireSMRequestWaitTime();
 
-    public long getTxEnquireSMRequestResponseTime();
+    public Long getTxEnquireSMRequestResponseTime();
 
-    public long getTxEnquireSMRequestEstimatedProcessingTime();
+    public Long getTxEnquireSMRequestEstimatedProcessingTime();
 
-    public int getTxEnquireSMResponseCommandStatusSuccessCounter();
+    public Integer getTxEnquireSMResponseCommandStatusSuccessCounter();
 
-    public long getRxEnquireSMRequestWaitTime();
+    public Long getRxEnquireSMRequestWaitTime();
 
-    public long getRxEnquireSMRequestResponseTime();
+    public Long getRxEnquireSMRequestResponseTime();
 
-    public long getRxEnquireSMRequestEstimatedProcessingTime();
+    public Long getRxEnquireSMRequestEstimatedProcessingTime();
 
-    public int getRxEnquireSMResponseCommandStatusSuccessCounter();
+    public Integer getRxEnquireSMResponseCommandStatusSuccessCounter();
 
     public void enableLogBytes();
     
