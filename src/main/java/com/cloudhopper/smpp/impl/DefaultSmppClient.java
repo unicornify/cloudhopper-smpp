@@ -186,27 +186,39 @@ public class DefaultSmppClient implements SmppClient {
     }
 
     @Override
-    public SmppSession bind(SmppSessionConfiguration config, SmppSessionHandler sessionHandler) throws SmppTimeoutException, SmppChannelException, SmppBindException, UnrecoverablePduException, InterruptedException {
+    public SmppSession bind(SmppSessionConfiguration config, SmppSessionHandler sessionHandler) throws SmppTimeoutException,
+            SmppChannelException, SmppBindException, UnrecoverablePduException, InterruptedException {
+        return bind(config, sessionHandler, -1);
+    }
+
+    @Override
+    public SmppSession bind(SmppSessionConfiguration config, SmppSessionHandler sessionHandler, int initialSequenceNumber)
+            throws SmppTimeoutException, SmppChannelException, SmppBindException, UnrecoverablePduException,
+            InterruptedException {
         DefaultSmppSession session = null;
         try {
             // connect to the remote system and create the session
-            logger.debug("Connecting to remote system " + config.getName() + " host " + config.getHost() + ":" + config.getPort());
+            logger.debug(
+                    "Connecting to remote system " + config.getName() + " host " + config.getHost() + ":" + config.getPort());
             session = doOpen(config, sessionHandler);
+
+            if (initialSequenceNumber > 0) {
+                ((DefaultSmppSession) session).resetSequenceNumber(initialSequenceNumber);
+            }
 
             // try to bind to the remote system (may throw an exception)
             logger.debug("Binding to remote system " + config.getName());
             doBind(session, config, sessionHandler);
-            
+
             logger.debug("Successfully bound to " + config.getName());
         } finally {
             // close the session if we weren't able to bind correctly
             if (session != null && !session.isBound()) {
                 // make sure that the resources are always cleaned up
-                try { 
+                try {
                     logger.debug("Closing session - not able to bind to " + config.getName());
                     session.destroy();
-                } 
-                catch (Exception e) {
+                } catch (Exception e) {
                     logger.debug("Exception while trying to close connection to " + config.getName(), e);
                 }
             }

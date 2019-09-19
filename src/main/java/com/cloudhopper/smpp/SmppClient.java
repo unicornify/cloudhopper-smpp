@@ -55,6 +55,10 @@ public interface SmppClient {
      */
     public SmppSession bind(SmppSessionConfiguration config, SmppSessionHandler sessionHandler) throws SmppTimeoutException, SmppChannelException, SmppBindException, UnrecoverablePduException, InterruptedException;
 
+    public SmppSession bind(SmppSessionConfiguration config, SmppSessionHandler sessionHandler, int initialSequenceNumber)
+            throws SmppTimeoutException, SmppChannelException, SmppBindException, UnrecoverablePduException,
+            InterruptedException;
+
     /**
      * Destroy a client by ensuring that all session sockets are closed and all
      * resources are cleaned up.  This method should the <b>last</b> method called
