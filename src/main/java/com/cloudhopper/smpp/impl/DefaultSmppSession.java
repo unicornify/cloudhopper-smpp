@@ -150,7 +150,11 @@ public class DefaultSmppSession implements SmppServerSession, SmppSessionChannel
             this.counters = new DefaultSmppSessionCounters();
         }
     }
-    
+
+    public void resetSequenceNumber(int newValue) {
+        this.sequenceNumber.reset(newValue);
+    }
+
     public void registerMBean(String objectName) {
         // register the this queue manager as an mbean
         try {

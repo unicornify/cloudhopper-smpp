@@ -84,6 +84,14 @@ public class SequenceNumber {
         this.value = DEFAULT_VALUE;
     }
 
+    /**
+     * Reset the sequence scheme to the concrete value of the sequence.
+     */
+    synchronized public void reset(int newValue) {
+//        assertValid(newValue);
+        this.value = newValue;
+    }
+
     static public void assertValid(int sequenceNumber) throws InvalidSequenceNumberException {
         // turns out that some operators ignore the specifications and actually
         // use all 32 bits of the sequence number -- instead of validating it
