@@ -1316,6 +1316,11 @@ public class DefaultSmppSession implements SmppServerSession, SmppSessionChannel
     }
 
     @Override
+    public Map getTxDataSMResponseCommandStatusCounter() {
+        return (!hasCounters() || this.counters.getTxDataSM().getResponseCommandStatusCounter() == null)  ? null : this.counters.getTxDataSM().getResponseCommandStatusCounter().getConcurrentCommandStatusCounter();
+    }
+
+    @Override
     public Long getRxDataSMRequestWaitTime() {
         return hasCounters() ? this.counters.getRxDataSM().getRequestWaitTime() : null;
     }
@@ -1333,6 +1338,11 @@ public class DefaultSmppSession implements SmppServerSession, SmppSessionChannel
     @Override
     public Integer getRxDataSMResponseCommandStatusSuccessCounter() {
         return (!hasCounters() || this.counters.getRxDataSM().getResponseCommandStatusCounter() == null)  ? null : this.counters.getRxDataSM().getResponseCommandStatusCounter().get(SmppConstants.STATUS_OK);
+    }
+
+    @Override
+    public Map getRxDataSMResponseCommandStatusCounter() {
+        return (!hasCounters() || this.counters.getRxDataSM().getResponseCommandStatusCounter() == null)  ? null : this.counters.getRxDataSM().getResponseCommandStatusCounter().getConcurrentCommandStatusCounter();
     }
 
     @Override
@@ -1356,6 +1366,11 @@ public class DefaultSmppSession implements SmppServerSession, SmppSessionChannel
     }
 
     @Override
+    public Map getTxSubmitSMResponseCommandStatusCounter() {
+        return (!hasCounters() || this.counters.getTxSubmitSM().getResponseCommandStatusCounter() == null)  ? null : this.counters.getTxSubmitSM().getResponseCommandStatusCounter().getConcurrentCommandStatusCounter();
+    }
+
+    @Override
     public Long getRxSubmitSMRequestWaitTime() {
         return hasCounters() ? this.counters.getRxSubmitSM().getRequestWaitTime() : null;
     }
@@ -1373,6 +1388,11 @@ public class DefaultSmppSession implements SmppServerSession, SmppSessionChannel
     @Override
     public Integer getRxSubmitSMResponseCommandStatusSuccessCounter() {
         return (!hasCounters() || this.counters.getRxSubmitSM().getResponseCommandStatusCounter() == null)  ? null : this.counters.getRxSubmitSM().getResponseCommandStatusCounter().get(SmppConstants.STATUS_OK);
+    }
+
+    @Override
+    public Map getRxSubmitSMResponseCommandStatusCounter() {
+        return (!hasCounters() || this.counters.getRxSubmitSM().getResponseCommandStatusCounter() == null)  ? null : this.counters.getRxSubmitSM().getResponseCommandStatusCounter().getConcurrentCommandStatusCounter();
     }
 
     @Override
@@ -1396,6 +1416,11 @@ public class DefaultSmppSession implements SmppServerSession, SmppSessionChannel
     }
 
     @Override
+    public Map getTxDeliverSMResponseCommandStatusCounter() {
+        return (!hasCounters() || this.counters.getTxDeliverSM().getResponseCommandStatusCounter() == null)  ? null : this.counters.getTxDeliverSM().getResponseCommandStatusCounter().getConcurrentCommandStatusCounter();
+    }
+
+    @Override
     public Long getRxDeliverSMRequestWaitTime() {
         return hasCounters() ? this.counters.getRxDeliverSM().getRequestWaitTime() : null;
     }
@@ -1413,6 +1438,11 @@ public class DefaultSmppSession implements SmppServerSession, SmppSessionChannel
     @Override
     public Integer getRxDeliverSMResponseCommandStatusSuccessCounter() {
         return (!hasCounters() || this.counters.getRxDeliverSM().getResponseCommandStatusCounter() == null)  ? null : this.counters.getRxDeliverSM().getResponseCommandStatusCounter().get(SmppConstants.STATUS_OK);
+    }
+
+    @Override
+    public Map getRxDeliverSMResponseCommandStatusCounter() {
+        return (!hasCounters() || this.counters.getRxDeliverSM().getResponseCommandStatusCounter() == null)  ? null : this.counters.getRxDeliverSM().getResponseCommandStatusCounter().getConcurrentCommandStatusCounter();
     }
 
     @Override
@@ -1436,6 +1466,11 @@ public class DefaultSmppSession implements SmppServerSession, SmppSessionChannel
     }
 
     @Override
+    public Map getTxEnquireLinkResponseCommandStatusCounter() {
+        return (!hasCounters() || this.counters.getTxEnquireLink().getResponseCommandStatusCounter() == null)  ? null : this.counters.getTxEnquireLink().getResponseCommandStatusCounter().getConcurrentCommandStatusCounter();
+    }
+
+    @Override
     public Long getRxEnquireSMRequestWaitTime() {
         return hasCounters() ? this.counters.getRxEnquireLink().getRequestWaitTime() : null;
     }
@@ -1453,6 +1488,11 @@ public class DefaultSmppSession implements SmppServerSession, SmppSessionChannel
     @Override
     public Integer getRxEnquireSMResponseCommandStatusSuccessCounter() {
         return (!hasCounters() || this.counters.getRxEnquireLink().getResponseCommandStatusCounter() == null)  ? null : this.counters.getRxEnquireLink().getResponseCommandStatusCounter().get(SmppConstants.STATUS_OK);
+    }
+
+    @Override
+    public Map getRxEnquireLinkResponseCommandStatusCounter() {
+        return (!hasCounters() || this.counters.getRxEnquireLink().getResponseCommandStatusCounter() == null)  ? null : this.counters.getRxEnquireLink().getResponseCommandStatusCounter().getConcurrentCommandStatusCounter();
     }
 
     @Override

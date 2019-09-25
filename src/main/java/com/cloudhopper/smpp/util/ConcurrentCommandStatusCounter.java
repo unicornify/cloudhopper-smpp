@@ -49,7 +49,10 @@ public class ConcurrentCommandStatusCounter {
         }
         return copy;
     }
-    
+
+    public Map getConcurrentCommandStatusCounter() {
+        return map;
+    }
     public int get(int commandStatus) {
         Integer key = new Integer(commandStatus);
         AtomicInteger val = map.get(key);
