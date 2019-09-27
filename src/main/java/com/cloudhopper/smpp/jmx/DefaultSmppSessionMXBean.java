@@ -247,6 +247,8 @@ public interface DefaultSmppSessionMXBean {
 
     public Integer getTxSubmitSMResponseCommandStatusSuccessCounter();
 
+    public Integer getTxSubmitSMResponseCommandStatusServerErrorCounter();
+
     public Map getTxSubmitSMResponseCommandStatusCounter();
 
     public Long getRxSubmitSMRequestWaitTime();
@@ -256,6 +258,8 @@ public interface DefaultSmppSessionMXBean {
     public Long getRxSubmitSMRequestEstimatedProcessingTime();
 
     public Integer getRxSubmitSMResponseCommandStatusSuccessCounter();
+
+    public Integer getRxSubmitSMResponseCommandStatusServerErrorCounter();
 
     public Map getRxSubmitSMResponseCommandStatusCounter();
 
@@ -267,6 +271,8 @@ public interface DefaultSmppSessionMXBean {
 
     public Integer getTxDeliverSMResponseCommandStatusSuccessCounter();
 
+    public Integer getTxDeliverSMResponseCommandStatusServerErrorCounter();
+
     public Map getTxDeliverSMResponseCommandStatusCounter();
 
     public Long getRxDeliverSMRequestWaitTime();
@@ -276,6 +282,8 @@ public interface DefaultSmppSessionMXBean {
     public Long getRxDeliverSMRequestEstimatedProcessingTime();
 
     public Integer getRxDeliverSMResponseCommandStatusSuccessCounter();
+
+    public Integer getRxDeliverSMResponseCommandStatusServerErrorCounter();
 
     public Map getRxDeliverSMResponseCommandStatusCounter();
 
@@ -287,6 +295,8 @@ public interface DefaultSmppSessionMXBean {
 
     public Integer getTxEnquireSMResponseCommandStatusSuccessCounter();
 
+    public Integer getTxEnquireSMResponseCommandStatusServerErrorCounter();
+
     public Map getTxEnquireLinkResponseCommandStatusCounter();
 
     public Long getRxEnquireSMRequestWaitTime();
@@ -296,6 +306,8 @@ public interface DefaultSmppSessionMXBean {
     public Long getRxEnquireSMRequestEstimatedProcessingTime();
 
     public Integer getRxEnquireSMResponseCommandStatusSuccessCounter();
+
+    public Integer getRxEnquireSMResponseCommandStatusServerErrorCounter();
 
     public Map getRxEnquireLinkResponseCommandStatusCounter();
 

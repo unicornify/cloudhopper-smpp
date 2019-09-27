@@ -1366,6 +1366,11 @@ public class DefaultSmppSession implements SmppServerSession, SmppSessionChannel
     }
 
     @Override
+    public Integer getTxSubmitSMResponseCommandStatusServerErrorCounter() {
+        return (!hasCounters() || this.counters.getTxSubmitSM().getResponseCommandStatusCounter() == null) ? null : this.counters.getTxSubmitSM().getResponseCommandStatusCounter().getServerErrorCounter();
+    }
+
+    @Override
     public Map getTxSubmitSMResponseCommandStatusCounter() {
         return (!hasCounters() || this.counters.getTxSubmitSM().getResponseCommandStatusCounter() == null)  ? null : this.counters.getTxSubmitSM().getResponseCommandStatusCounter().getConcurrentCommandStatusCounter();
     }
@@ -1388,6 +1393,11 @@ public class DefaultSmppSession implements SmppServerSession, SmppSessionChannel
     @Override
     public Integer getRxSubmitSMResponseCommandStatusSuccessCounter() {
         return (!hasCounters() || this.counters.getRxSubmitSM().getResponseCommandStatusCounter() == null)  ? null : this.counters.getRxSubmitSM().getResponseCommandStatusCounter().get(SmppConstants.STATUS_OK);
+    }
+
+    @Override
+    public Integer getRxSubmitSMResponseCommandStatusServerErrorCounter() {
+        return (!hasCounters() || this.counters.getRxSubmitSM().getResponseCommandStatusCounter() == null)  ? null : this.counters.getRxSubmitSM().getResponseCommandStatusCounter().getServerErrorCounter();
     }
 
     @Override
@@ -1416,6 +1426,11 @@ public class DefaultSmppSession implements SmppServerSession, SmppSessionChannel
     }
 
     @Override
+    public Integer getTxDeliverSMResponseCommandStatusServerErrorCounter() {
+        return (!hasCounters() || this.counters.getTxDeliverSM().getResponseCommandStatusCounter() == null)  ? null : this.counters.getTxDeliverSM().getResponseCommandStatusCounter().getServerErrorCounter();
+    }
+
+    @Override
     public Map getTxDeliverSMResponseCommandStatusCounter() {
         return (!hasCounters() || this.counters.getTxDeliverSM().getResponseCommandStatusCounter() == null)  ? null : this.counters.getTxDeliverSM().getResponseCommandStatusCounter().getConcurrentCommandStatusCounter();
     }
@@ -1438,6 +1453,11 @@ public class DefaultSmppSession implements SmppServerSession, SmppSessionChannel
     @Override
     public Integer getRxDeliverSMResponseCommandStatusSuccessCounter() {
         return (!hasCounters() || this.counters.getRxDeliverSM().getResponseCommandStatusCounter() == null)  ? null : this.counters.getRxDeliverSM().getResponseCommandStatusCounter().get(SmppConstants.STATUS_OK);
+    }
+
+    @Override
+    public Integer getRxDeliverSMResponseCommandStatusServerErrorCounter() {
+        return (!hasCounters() || this.counters.getRxDeliverSM().getResponseCommandStatusCounter() == null)  ? null : this.counters.getRxDeliverSM().getResponseCommandStatusCounter().getServerErrorCounter();
     }
 
     @Override
@@ -1466,6 +1486,11 @@ public class DefaultSmppSession implements SmppServerSession, SmppSessionChannel
     }
 
     @Override
+    public Integer getTxEnquireSMResponseCommandStatusServerErrorCounter() {
+        return (!hasCounters() || this.counters.getTxEnquireLink().getResponseCommandStatusCounter() == null)  ? null : this.counters.getTxEnquireLink().getResponseCommandStatusCounter().getServerErrorCounter();
+    }
+
+    @Override
     public Map getTxEnquireLinkResponseCommandStatusCounter() {
         return (!hasCounters() || this.counters.getTxEnquireLink().getResponseCommandStatusCounter() == null)  ? null : this.counters.getTxEnquireLink().getResponseCommandStatusCounter().getConcurrentCommandStatusCounter();
     }
@@ -1488,6 +1513,11 @@ public class DefaultSmppSession implements SmppServerSession, SmppSessionChannel
     @Override
     public Integer getRxEnquireSMResponseCommandStatusSuccessCounter() {
         return (!hasCounters() || this.counters.getRxEnquireLink().getResponseCommandStatusCounter() == null)  ? null : this.counters.getRxEnquireLink().getResponseCommandStatusCounter().get(SmppConstants.STATUS_OK);
+    }
+
+    @Override
+    public Integer getRxEnquireSMResponseCommandStatusServerErrorCounter() {
+        return (!hasCounters() || this.counters.getRxEnquireLink().getResponseCommandStatusCounter() == null)  ? null : this.counters.getRxEnquireLink().getResponseCommandStatusCounter().getServerErrorCounter();
     }
 
     @Override
