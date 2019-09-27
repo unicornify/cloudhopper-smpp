@@ -91,7 +91,7 @@ public class ConcurrentCommandStatusCounter {
 
         //Increament client/server ErrorCounter as applicable
         switch (commandStatus) {
-            case SmppConstants.STATUS_INVDSTADR: case SmppConstants.STATUS_INVSRCADR:
+            case SmppConstants.STATUS_INVDSTADR: case SmppConstants.STATUS_INVSRCADR: case SmppConstants.STATUS_INVMSGLEN:
                 clientErrorCounter.incrementAndGet();
             default:
                 serverErrorCounter.incrementAndGet();
