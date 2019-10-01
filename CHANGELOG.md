@@ -13,6 +13,9 @@ cloudhopper-smpp
    on Trustin's review.
  - Netty dependency changed to 4.0.25.Final.
 
+## 5.1.0-168
+ - SRE-4307 Added Smpp Session Status Counters as mbean attributes
+
 ## 5.1.0-157
  - SRE-3922 Added Smpp Session Counters as individual attributes
 
