@@ -5,6 +5,18 @@
 	<artifactId>ch-smpp</artifactId>
 	<packaging>jar</packaging>
 	<version>6.0.0-netty4-beta-3-SNAPSHOT</version>
+	<build>
+		<plugins>
+			<plugin>
+				<groupId>org.apache.maven.plugins</groupId>
+				<artifactId>maven-compiler-plugin</artifactId>
+				<configuration>
+					<source>6</source>
+					<target>6</target>
+				</configuration>
+			</plugin>
+		</plugins>
+	</build>
 	<name>ch-smpp</name>
 	<description>Efficient, scalable, and flexible Java implementation of the Short Messaging Peer to Peer Protocol (SMPP)</description>
 	<url>https://github.com/Restcomm/cloudhopper-smpp</url>
