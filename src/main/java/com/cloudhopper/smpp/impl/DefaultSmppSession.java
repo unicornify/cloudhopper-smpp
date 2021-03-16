@@ -76,14 +76,14 @@ public class DefaultSmppSession implements SmppServerSession, SmppSessionChannel
     private Long serverSessionId;
     // pre-prepared BindResponse to send back once we're flagged as ready
     private BaseBindResp preparedBindResponse;
-    private ScheduledExecutorService monitorExecutor;
+    private final ScheduledExecutorService monitorExecutor;
     private DefaultSmppSessionCounters counters;
 
     /**
      * Creates an SmppSession for a server-based session.
      */
     public DefaultSmppSession(Type localType, SmppSessionConfiguration configuration, Channel channel, DefaultSmppServer server, Long serverSessionId, BaseBindResp preparedBindResponse, byte interfaceVersion, ScheduledExecutorService monitorExecutor) {
-        this(localType, configuration, channel, (SmppSessionHandler)null, monitorExecutor);
+        this(localType, configuration, channel, null, monitorExecutor);
         // default state for a server session is that it's binding
         this.state.set(STATE_BINDING);
         this.server = server;
@@ -205,11 +205,7 @@ public class DefaultSmppSession implements SmppServerSession, SmppSessionChannel
     @Override
     public String getStateName() {
         int s = this.state.get();
-        if (s >= 0 || s < STATES.length) {
-            return STATES[s];
-        } else {
-            return "UNKNOWN (" + s + ")";
-        }
+        return STATES[s];
     }
 
     protected void setInterfaceVersion(byte value) {
@@ -296,7 +292,7 @@ public class DefaultSmppSession implements SmppServerSession, SmppSessionChannel
         try {
             this.sendResponsePdu(this.preparedBindResponse);
         } catch (Exception e) {
-            logger.error("{}", e);
+            logger.error(e.getMessage());
         }
         // flag the channel is ready to read
         //TODO: how to make the channel readable?
@@ -306,7 +302,7 @@ public class DefaultSmppSession implements SmppServerSession, SmppSessionChannel
         this.setBound();
     }
 
-    public BaseBindResp bind(BaseBind request, long timeoutInMillis) throws RecoverablePduException, UnrecoverablePduException, SmppBindException, SmppTimeoutException, SmppChannelException, InterruptedException {
+    public BaseBindResp bind(BaseBind request, long timeoutInMillis) throws RecoverablePduException, UnrecoverablePduException, SmppTimeoutException, SmppChannelException, InterruptedException {
         assertValidRequest(request);
         boolean bound = false;
         try {
@@ -354,7 +350,7 @@ public class DefaultSmppSession implements SmppServerSession, SmppSessionChannel
                 setBound();
             } else {
                 // the bind failed, we need to clean up resources
-                try { this.close(); } catch (Exception e) { }
+                try { this.close(); } catch (Exception ignored) { }
             }
         }
     }
@@ -430,7 +426,7 @@ public class DefaultSmppSession implements SmppServerSession, SmppSessionChannel
         return (SubmitSmResp)response;
     }
     
-    protected void assertValidRequest(PduRequest request) throws NullPointerException, RecoverablePduException, UnrecoverablePduException {
+    protected void assertValidRequest(PduRequest request) throws NullPointerException {
         if (request == null) {
             throw new NullPointerException("PDU request cannot be null");
         }
@@ -480,7 +476,7 @@ public class DefaultSmppSession implements SmppServerSession, SmppSessionChannel
         // encode the pdu into a buffer
         ByteBuf buffer = transcoder.encode(pdu);
 
-        WindowFuture<Integer,PduRequest,PduResponse> future = null;
+        final WindowFuture<Integer,PduRequest,PduResponse> future;
         try {
             future = sendWindow.offer(pdu.getSequenceNumber(), pdu, timeoutMillis, configuration.getRequestExpiryTimeout(), synchronous);
         } catch (DuplicateKeyException e) {
@@ -579,7 +575,6 @@ public class DefaultSmppSession implements SmppServerSession, SmppSessionChannel
         }
     }
 
-    @SuppressWarnings("unchecked")
     @Override
     public void firePduReceived(Pdu pdu) {
         if (configuration.getLoggingOptions().isLogPduEnabled()) {
@@ -609,7 +604,7 @@ public class DefaultSmppSession implements SmppServerSession, SmppSessionChannel
                     sendResponsePdu(responsePdu);
                     countSendResponsePduResponseTime(responsePdu, System.currentTimeMillis() - startTime);
                 } catch (Exception e) {
-                    logger.error("Unable to cleanly return response PDU: {}", e);
+                    logger.error("Unable to cleanly return response PDU:", e);
                 }
             }
         } else {
@@ -630,12 +625,10 @@ public class DefaultSmppSession implements SmppServerSession, SmppSessionChannel
                     if (callerStateHint == WindowFuture.CALLER_WAITING) {
                         logger.trace("Caller waiting for request: {}", future.getRequest()); 
                         // if a caller is waiting, nothing extra needs done as calling thread will handle the response
-                        return;
                     } else if (callerStateHint == WindowFuture.CALLER_NOT_WAITING) {
                         logger.trace("Caller not waiting for request: {}", future.getRequest()); 
                         // this was an "expected" response - wrap it into an async response
                         this.sessionHandler.fireExpectedPduResponseReceived(new DefaultPduAsyncResponse(future));
-                        return;
                     } else {
                         logger.trace("Caller timed out waiting for request: {}", future.getRequest());
                         // we send the request, but caller gave up on it awhile ago
@@ -664,7 +657,7 @@ public class DefaultSmppSession implements SmppServerSession, SmppSessionChannel
             // during testing under high load -- java.io.IOException: Connection reset by peer
             // let's check to see if this session was requested to be closed
             if (isUnbinding() || isClosed()) {
-                logger.debug("Unbind/close was requested, ignoring exception thrown: {}", t);
+                logger.debug("Unbind/close was requested, ignoring exception thrown:", t);
             } else {
                 this.sessionHandler.fireUnknownThrowable(t);
             }
@@ -693,7 +686,7 @@ public class DefaultSmppSession implements SmppServerSession, SmppSessionChannel
                     logger.debug("Caller waiting on request [{}], cancelling it with a channel closed exception", future.getKey());
                     try {
                         future.fail(cause);
-                    } catch (Exception e) { }
+                    } catch (Exception ignored) { }
                 }
             }
         }
