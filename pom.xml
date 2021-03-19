@@ -4,7 +4,7 @@
 	<groupId>com.cloudhopper</groupId>
 	<artifactId>ch-smpp</artifactId>
 	<packaging>jar</packaging>
-	<version>6.0.0-netty4-beta-3-SNAPSHOT</version>
+	<version>6.0.0-netty4-beta-4-SNAPSHOT</version>
 	<build>
 		<plugins>
 			<plugin>
@@ -19,21 +19,15 @@
 	</build>
 	<name>ch-smpp</name>
 	<description>Efficient, scalable, and flexible Java implementation of the Short Messaging Peer to Peer Protocol (SMPP)</description>
-	<url>https://github.com/Restcomm/cloudhopper-smpp</url>
+	<url>https://github.com/unicornify/cloudhopper-smpp</url>
 	<inceptionYear>2009</inceptionYear>
 
 	<scm>
-		<url>https://github.com/Restcomm/cloudhopper-smpp</url>
-		<connection>scm:git:https://github.com/Restcomm/cloudhopper-smpp.git</connection>
-		<developerConnection>scm:git:git@github.com:Restcomm/cloudhopper-smpp.git</developerConnection>
+		<url>https://github.com/unicornify/cloudhopper-smpp</url>
+		<connection>scm:git:https://github.com/unicornify/cloudhopper-smpp.git</connection>
+		<developerConnection>scm:git:git@github.com:unicornify/cloudhopper-smpp.git</developerConnection>
 		<tag>netty4</tag>
 	</scm>
-
-	<parent>
-		<groupId>org.restcomm</groupId>
-		<artifactId>restcomm-parent</artifactId>
-		<version>3.0.5</version>
-	</parent>
 
 	<properties>
 		<main.java.package>com.cloudhopper.smpp</main.java.package>
