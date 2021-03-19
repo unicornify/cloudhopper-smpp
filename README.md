@@ -1,10 +1,15 @@
-Cloudhopper SMPP by Fizzed (forked from Twitter) 
+Cloudhopper SMPP by Fizzed (forked from Twitter)
 ================================================
 
-[![Build Status](https://travis-ci.org/RestComm/cloudhopper-smpp.svg?branch=master)](https://travis-ci.org/RestComm/cloudhopper-smpp)
+[![](https://jitpack.io/v/unicornify/cloudhopper-smpp.svg)](https://jitpack.io/#unicornify/cloudhopper-smpp)
 
 News
 ------------------------
+
+**Mar 2021**
+
+While Restcomm took over from Fizzed a while ago, there is now an apparent lack of commits on the original repository for more than a year.
+The project was forked here and was updated as it is being used in our projects.
 
 **Nov 2016**
 
@@ -71,12 +76,21 @@ If you're looking for commercial support, please contact [Fizzed](http://fizzed.
 Installation
 ------------
 
-Library is available via maven central
+Library is available via jitpack, add the JitPack repository to your maven pom.xml
+
+    <repositories>
+      <repository>
+          <id>jitpack.io</id>
+          <url>https://jitpack.io</url>
+      </repository>
+    </repositories>
+
+Add the dependency
 
     <dependency>
-      <groupId>com.fizzed</groupId>
-      <artifactId>ch-smpp</artifactId>
-      <version>5.0.9</version>
+      <groupId>com.github.unicornify</groupId>
+      <artifactId>cloudhopper-smpp</artifactId>
+      <version>version-6.0.0-netty4-beta-4</version>
     </dependency>
 
 Demo Code / Tutorials
@@ -85,39 +99,6 @@ Demo Code / Tutorials
 There are numerous examples of how to use various parts of this library:
 
     src/test/java/com/cloudhopper/smpp/demo/
-
-To run some of the samples, there is a Makefile to simplify the syntax required
-by Maven:
-
-    make client
-    make server
-    make performance-client
-    make simulator
-    make rebind
-    make parser
-    make dlr
-    make ssl-client
-    make ssl-server
-    make persist-client
-    make server-echo
-
-On Windows, the examples can run with `nmake` instead of `make`.
-
-The easiest way to get started is to try out our `server` and `client` or `ssl-server`
-and `ssl-client` examples. Open up two shells.  In the first shell, run:
-
-    make server
-
-In the second shell, run:
-
-    make client
-
-You'll see the client bind to the server and a few different type of requests
-exchanged back and forth.
-
-You can also try `make persist-client` instead of `make client` which demonstrates a persistent SMPP connection.
-
-`make server-echo` will echo back any MT as an MO. This makes it easier to test handling of MO messages.
 
 User Contributed Demos
 ----------------------
