@@ -3,6 +3,15 @@ Cloudhopper by Twitter
 
 cloudhopper-smpp
 ----------------
+## 6.0.0-netty4-beta-5 - 2021-12-13
+ - Netty dependency changed to 4.1.68.Final.
+ - Upped all other dependencies to latest versions
+
+## 6.0.0-netty4-beta-4 - 2021-03-19
+ - Netty dependency changed to 4.1.38.Final.
+
+## 6.0.0-netty4-beta-3 - ?
+
 ## 6.0.0-netty4-beta-2
  - ch-commons-util version bumped from 6.0.1 to 6.0.2 to fix race condition bug
    in WindowFuture:
