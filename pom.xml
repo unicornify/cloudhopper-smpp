@@ -4,7 +4,7 @@
 	<groupId>com.cloudhopper</groupId>
 	<artifactId>ch-smpp</artifactId>
 	<packaging>jar</packaging>
-	<version>6.0.0-netty4-beta-5</version>
+	<version>6.0.0-netty4-beta-6</version>
 	<build>
 		<plugins>
 			<plugin>
@@ -34,8 +34,8 @@
 		<ch-commons-util.version>7.0.6</ch-commons-util.version>
 		<ch-commons-charset.version>7.0.6</ch-commons-charset.version>
 		<ch-commons-gsm.version>7.0.6</ch-commons-gsm.version>
-		<netty.version>4.1.68.Final</netty.version>
-		<logback.version>1.2.7</logback.version>
+		<netty.version>4.1.72.Final</netty.version>
+		<logback.version>1.2.9</logback.version>
 		<junit.version>4.13.2</junit.version>
 		<slf4j.version>1.7.32</slf4j.version>
 		<!-- workaround travis ci maven version requirement -->
